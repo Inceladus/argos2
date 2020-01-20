@@ -3,7 +3,7 @@
 class orgao extends database {
 
 	public function obterTodos() {
-		$sql = "SELECT idorgao,orgao FROM orgao";
+		$sql = "SELECT idorgao , orgao FROM orgao";
 	
 		if ( $rs = parent::fetch_all($sql) ) {
 			foreach ( $rs as $row ) {

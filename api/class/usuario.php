@@ -16,8 +16,9 @@ class usuario extends database {
 	}
 	
 	public function obterTodos() {
-		$sql = "SELECT idusuario, nome, orgao, email, orgao, permissao, dt_update, ativado 
-		FROM usuario";
+		$sql = "SELECT idusuario, nome, orgao, email, u.idorgao, permissao, dt_update, ativado 
+		FROM usuario u
+		INNER JOIN orgao o on u.idorgao=o.idorgao";
 	
 		if ( $rs = parent::fetch_all($sql) ) {
 			foreach ( $rs as $row ) {
@@ -42,7 +43,7 @@ class usuario extends database {
 		$this->idusuario = @ $_REQUEST['idusuario'];
 		$this->nome = (@ $_REQUEST['nome']);
 		$this->email = (@ $_REQUEST['email']);
-		$this->orgao = @ $_REQUEST['idorgao'];
+		$this->idorgao = @ $_REQUEST['idorgao'];
 		$this->permissao = implode(',', @ $_REQUEST['permissao']);
 
 		if ( @ $_REQUEST['ativado'] ) $this->ativado = 'S';
