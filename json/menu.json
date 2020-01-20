@@ -1,0 +1,23 @@
+{ 
+	"title": "ARGOS",
+	"items": [
+		{ "label": "Ações", 
+		  "subitems": [
+			{ "id": "painel-acoes", "label": "Painel de Ações" },
+		  	{ "id": "cadastrar-acoes", "label": "Cadastrar Ações" }
+			]
+		},
+		{ "label": "Relatórios", 
+		  "subitems": [
+		  	{ "id": "cadastrar-relatorios", "label": "Cadastrar" },
+			{ "id": "consulta-relatorios", "label": "Consultar" }
+			]
+		},
+		{ "label": "Administração", 
+		  "subitems": [
+			{ "id": "usuario", "label": "Cadastrar usuários" },
+			{ "id": "mudasenha", "label": "Mudar senha" }
+			]
+		}
+	]
+}

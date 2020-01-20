@@ -1,0 +1,21 @@
+body { 
+	margin: 0; padding: 0; 
+}
+
+html, body, #map { 
+	width: 100vw; 
+	height: 100%;
+}
+
+.info {
+    padding: 20px;
+	font: 16px/20px Arial, Helvetica, sans-serif;
+    background: rgba(242,228,92,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+	border: solid 1px rgba(0,0,0,0.3);
+    border-radius: 5px;
+}
+
+div .form-control {
+    height: auto;
+}

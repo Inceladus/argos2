@@ -1,0 +1,28 @@
+Registrada
+Relacionada
+Avaliada
+Encaminhada
+Devolvida
+Finalizada
+Arquivada
+
+update denunciado d 
+set d.faixa_etaria=(select faixa_etaria from faixa_etaria fe where fe.idfaixa_etaria=d.idfaixa_etaria) 
+
+update denunciado d 
+set d.compleicao=(select compleicao from compleicao co where co.idcompleicao=d.idcompleicao) 
+
+update denunciado d 
+set d.cutis=(select cutis from cutis c where c.idcutis=d.idcutis) 
+
+update denunciado d 
+set d.cor_olhos=(select cor_olhos from cor_olhos c where c.idcor_olhos=d.idcor_olhos) 
+
+update denunciado d 
+set d.cor_cabelo=(select cor_cabelo from cor_cabelo c where c.idcor_cabelo=d.idcor_cabelo) 
+
+update denunciado d 
+set d.tipo_cabelo=(select tipo_cabelo from tipo_cabelo c where c.idtipo_cabelo=d.idtipo_cabelo) 
+
+update denunciado d 
+set d.altura=(select altura from altura c where c.idaltura=d.idaltura) 
