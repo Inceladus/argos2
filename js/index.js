@@ -1,5 +1,4 @@
-// var url = window.location.origin + '/argos/api';
-var url = window.location.origin + '/api';
+var url = window.location.origin + '/argos/api';
 
 // Verifica se existe o token na sessionStorage
 if ( sessionStorage.getItem('token') ) {
