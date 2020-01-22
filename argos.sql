@@ -16,39 +16,6 @@
 CREATE DATABASE IF NOT EXISTS `argos` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `argos`;
 
--- Copiando estrutura para tabela argos.identificador
-CREATE TABLE IF NOT EXISTS `identificador` (
-  `idindicador` int(11) NOT NULL AUTO_INCREMENT,
-  `indicador` text NOT NULL,
-  PRIMARY KEY (`idindicador`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- Copiando dados para a tabela argos.identificador: ~0 rows (aproximadamente)
-/*!40000 ALTER TABLE `identificador` DISABLE KEYS */;
-/*!40000 ALTER TABLE `identificador` ENABLE KEYS */;
-
--- Copiando estrutura para tabela argos.ocorrencia
-CREATE TABLE IF NOT EXISTS `ocorrencia` (
-  `idocorrencia` int(11) NOT NULL AUTO_INCREMENT,
-  `ocorrencia` text NOT NULL DEFAULT '0',
-  PRIMARY KEY (`idocorrencia`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- Copiando dados para a tabela argos.ocorrencia: ~0 rows (aproximadamente)
-/*!40000 ALTER TABLE `ocorrencia` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ocorrencia` ENABLE KEYS */;
-
--- Copiando estrutura para tabela argos.operacao
-CREATE TABLE IF NOT EXISTS `operacao` (
-  `idoperacao` int(11) NOT NULL AUTO_INCREMENT,
-  `nome_operacao` text NOT NULL DEFAULT '0',
-  PRIMARY KEY (`idoperacao`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- Copiando dados para a tabela argos.operacao: ~0 rows (aproximadamente)
-/*!40000 ALTER TABLE `operacao` DISABLE KEYS */;
-/*!40000 ALTER TABLE `operacao` ENABLE KEYS */;
-
 -- Copiando estrutura para tabela argos.orgao
 CREATE TABLE IF NOT EXISTS `orgao` (
   `idorgao` int(11) NOT NULL AUTO_INCREMENT,
@@ -56,34 +23,12 @@ CREATE TABLE IF NOT EXISTS `orgao` (
   PRIMARY KEY (`idorgao`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela argos.orgao: ~1 rows (aproximadamente)
+-- Copiando dados para a tabela argos.orgao: ~2 rows (aproximadamente)
 /*!40000 ALTER TABLE `orgao` DISABLE KEYS */;
 INSERT INTO `orgao` (`idorgao`, `orgao`) VALUES
 	(1, 'PM'),
 	(2, 'PF');
 /*!40000 ALTER TABLE `orgao` ENABLE KEYS */;
-
--- Copiando estrutura para tabela argos.recurso
-CREATE TABLE IF NOT EXISTS `recurso` (
-  `idrecuso` int(11) DEFAULT NULL,
-  `nome_recurso` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- Copiando dados para a tabela argos.recurso: ~0 rows (aproximadamente)
-/*!40000 ALTER TABLE `recurso` DISABLE KEYS */;
-/*!40000 ALTER TABLE `recurso` ENABLE KEYS */;
-
--- Copiando estrutura para tabela argos.subindicador
-CREATE TABLE IF NOT EXISTS `subindicador` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `sub_indicador` text NOT NULL DEFAULT '0',
-  `idindicador` int(11) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- Copiando dados para a tabela argos.subindicador: ~0 rows (aproximadamente)
-/*!40000 ALTER TABLE `subindicador` DISABLE KEYS */;
-/*!40000 ALTER TABLE `subindicador` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela argos.transacao
 CREATE TABLE IF NOT EXISTS `transacao` (
@@ -92,36 +37,49 @@ CREATE TABLE IF NOT EXISTS `transacao` (
   `idusuario` int(11) NOT NULL,
   `dt_transacao` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`idtransacao`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela argos.transacao: ~17 rows (aproximadamente)
+-- Copiando dados para a tabela argos.transacao: ~38 rows (aproximadamente)
 /*!40000 ALTER TABLE `transacao` DISABLE KEYS */;
 INSERT INTO `transacao` (`idtransacao`, `transacao`, `idusuario`, `dt_transacao`) VALUES
-	(1, 'Entrou', 1, '2020-01-20 11:19:42'),
-	(2, 'Entrou', 1, '2020-01-20 11:23:33'),
-	(3, 'Entrou', 1, '2020-01-20 11:23:54'),
-	(4, 'Entrou', 1, '2020-01-20 11:24:10'),
-	(5, 'Entrou', 1, '2020-01-20 11:25:29'),
-	(6, 'Entrou', 1, '2020-01-20 11:25:50'),
-	(7, 'Entrou', 1, '2020-01-20 11:26:51'),
-	(8, 'Entrou', 1, '2020-01-20 11:32:09'),
-	(9, 'Entrou', 1, '2020-01-20 11:36:35'),
-	(10, 'Entrou', 1, '2020-01-20 12:05:19'),
-	(11, 'Entrou', 1, '2020-01-20 13:34:08'),
-	(12, 'renovou senha do usuario ID 1', 1, '2020-01-20 13:34:15'),
-	(13, 'Entrou', 1, '2020-01-20 13:34:20'),
-	(14, 'Entrou', 1, '2020-01-20 13:37:47'),
-	(15, 'Entrou', 1, '2020-01-20 14:10:07'),
-	(16, 'inserir orgao ID 2', 1, '2020-01-20 14:13:15'),
-	(17, 'alterou usuario ID 1', 1, '2020-01-20 14:13:15'),
-	(18, 'Entrou', 1, '2020-01-20 14:14:47'),
-	(19, 'alterou usuario ID 1', 1, '2020-01-20 14:15:24'),
-	(20, 'mudou senha', 1, '2020-01-20 14:16:48'),
-	(21, 'Entrou', 1, '2020-01-20 14:16:56'),
-	(22, 'Entrou', 1, '2020-01-20 14:17:05'),
-	(23, 'Entrou', 1, '2020-01-20 14:19:04'),
-	(24, 'alterou usuario ID 1', 1, '2020-01-20 14:19:09'),
-	(25, 'Entrou', 1, '2020-01-20 14:19:14');
+	(1, 'Entrou', 1, '2020-01-20 14:19:42'),
+	(2, 'Entrou', 1, '2020-01-20 14:23:33'),
+	(3, 'Entrou', 1, '2020-01-20 14:23:54'),
+	(4, 'Entrou', 1, '2020-01-20 14:24:10'),
+	(5, 'Entrou', 1, '2020-01-20 14:25:29'),
+	(6, 'Entrou', 1, '2020-01-20 14:25:50'),
+	(7, 'Entrou', 1, '2020-01-20 14:26:51'),
+	(8, 'Entrou', 1, '2020-01-20 14:32:09'),
+	(9, 'Entrou', 1, '2020-01-20 14:36:35'),
+	(10, 'Entrou', 1, '2020-01-20 15:05:19'),
+	(11, 'Entrou', 1, '2020-01-20 16:34:08'),
+	(12, 'renovou senha do usuario ID 1', 1, '2020-01-20 16:34:15'),
+	(13, 'Entrou', 1, '2020-01-20 16:34:20'),
+	(14, 'Entrou', 1, '2020-01-20 16:37:47'),
+	(15, 'Entrou', 1, '2020-01-20 17:10:07'),
+	(16, 'inserir orgao ID 2', 1, '2020-01-20 17:13:15'),
+	(17, 'alterou usuario ID 1', 1, '2020-01-20 17:13:15'),
+	(18, 'Entrou', 1, '2020-01-20 17:14:47'),
+	(19, 'alterou usuario ID 1', 1, '2020-01-20 17:15:24'),
+	(20, 'mudou senha', 1, '2020-01-20 17:16:48'),
+	(21, 'Entrou', 1, '2020-01-20 17:16:56'),
+	(22, 'Entrou', 1, '2020-01-20 17:17:05'),
+	(23, 'Entrou', 1, '2020-01-20 17:19:04'),
+	(24, 'alterou usuario ID 1', 1, '2020-01-20 17:19:09'),
+	(25, 'Entrou', 1, '2020-01-20 17:19:14'),
+	(26, 'Entrou', 1, '2020-01-21 17:13:34'),
+	(27, 'Entrou', 1, '2020-01-22 14:53:57'),
+	(28, 'Entrou', 1, '2020-01-22 16:42:02'),
+	(29, 'Entrou', 1, '2020-01-22 17:48:05'),
+	(30, 'alterou usuario ID 1', 1, '2020-01-22 17:57:50'),
+	(31, 'Entrou', 1, '2020-01-22 18:00:17'),
+	(32, 'Entrou', 1, '2020-01-22 18:00:25'),
+	(33, 'Entrou', 1, '2020-01-22 18:01:01'),
+	(34, 'alterou usuario ID 1', 1, '2020-01-22 18:05:08'),
+	(35, 'Entrou', 1, '2020-01-22 18:05:26'),
+	(36, 'alterou usuario ID 1', 1, '2020-01-22 18:08:24'),
+	(37, 'Entrou', 1, '2020-01-22 18:35:35'),
+	(38, 'Entrou', 1, '2020-01-22 18:37:08');
 /*!40000 ALTER TABLE `transacao` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela argos.usuario
@@ -140,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 -- Copiando dados para a tabela argos.usuario: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
 INSERT INTO `usuario` (`idusuario`, `nome`, `email`, `senha`, `permissao`, `idorgao`, `ativado`, `dt_update`) VALUES
-	(1, 'Administrador', 'admin@admin.com', '21232f297a57a5a743894a0e4a801fc3', 'painel-acoes,cadastrar-acoes,cadastrar-relatorios,consulta-relatorios,usuario,mudasenha', '2', 'S', '2020-01-20 14:19:09');
+	(1, 'Administrador', 'admin@admin.com', '21232f297a57a5a743894a0e4a801fc3', 'cadastrar-operacao,cadastrar-acao,cadastrar-produtividade,cadastrar-recurso,cadastrar-indicador,cadastrar-sub-indicador,painel-acoes,usuario,mudasenha,cadastrar-orgao', '2', 'S', '2020-01-22 18:08:24');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

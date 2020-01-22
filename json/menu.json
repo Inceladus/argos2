@@ -1,22 +1,22 @@
 { 
 	"title": "ARGOS",
 	"items": [
-		{ "label": "Ações", 
+		{ "label": "Operação",
 		  "subitems": [
-			{ "id": "painel-acoes", "label": "Painel de Ações" },
-		  	{ "id": "cadastrar-acoes", "label": "Cadastrar Ações" }
+			{ "id": "cadastrar-operacao", "label": "Cadastrar Operação" },
+			{ "id": "cadastrar-acoes", "label": "Cadastrar Ação da Operação" },
+			{ "id": "cadastrar-produtividade", "label": "Cadastrar Produtividade da Ação" }
 			]
 		},
-		{ "label": "Relatórios", 
-		  "subitems": [
-		  	{ "id": "cadastrar-relatorios", "label": "Cadastrar" },
-			{ "id": "consulta-relatorios", "label": "Consultar" }
-			]
-		},
-		{ "label": "Administração", 
-		  "subitems": [
-			{ "id": "usuario", "label": "Cadastrar usuários" },
-			{ "id": "mudasenha", "label": "Mudar senha" }
+		{"label": "Administração",
+			"subitems": [
+				{ "id": "cadastrar-orgao", "label": "Cadastrar Orgãos"},
+				{ "id": "cadastrar-recurso", "label": "Cadastrar Recursos" },
+				{ "id": "cadastrar-indicador", "label": "Cadastrar Grupo de Indicador" },
+				{ "id": "cadastrar-sub-indicador", "label": "Cadastrar Indicador" },
+				{ "id": "tipo-ocorrencia", "label": "Cadastrar Tipo de Ocorrência" },
+				{ "id": "usuario", "label": "Cadastrar usuários" },
+				{ "id": "mudasenha", "label": "Mudar senha" }
 			]
 		}
 	]
