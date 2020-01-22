@@ -1,6 +1,6 @@
 { 
 	"title": "ARGOS",
-	"items": [
+	"items": [ 
 		{ "label": "Operação",
 		  "subitems": [
 			{ "id": "cadastrar-operacao", "label": "Cadastrar Operação" },
