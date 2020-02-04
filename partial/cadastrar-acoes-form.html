@@ -1,0 +1,50 @@
+<form role="form">
+	<div class="modal-header">
+		<h4 class='modal-title'></h4>
+		<button type="button" class="close" data-dismiss="modal" aria-label="Fechar">&times;</button>
+	</div>
+	<div class="modal-body">
+		<input type='hidden' name='idacao'>
+		<div class='form-group'>
+			<label for='nome_acao'>Nome da Ação</label>
+			<input class='form-control' type='text' id='nome_acao' name='nome_acao' placeholder='Digite o nome da operacao' required>
+		</div>
+		<div class="row">
+			<div class="col-sm-6">
+				<label for='dt_inicio'>Data de Início</label>
+				<input class='form-control' type='date' id='dt_inicio' name='dt_inicio' required>
+			</div>
+			<div class="col-sm-6">
+				<label for='dt_termino'>Data de Término</label>
+				<input class='form-control' type='date' id='dt_termino' name='dt_termino' required>	
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6">
+				<label for='hr_inicio'>Hora de Início</label>
+				<input class='form-control' type='time' id='hr_inicio' name='hr_inicio' required>
+			</div>
+			<div class="col-sm-6">
+				<label for='hr_termino'>Hora de Término</label>
+				<input class='form-control' type='time' id='hr_termino' name='hr_termino' required>
+			</div>
+		</div>
+		
+		<!-- Latitude e Longitude -->
+
+		<div class="row">
+			<div class="col-sm-6">
+				<label>Status da Ação</label>
+				<select class='form-control selectpicker' id='status' name='status' data-live-search='true'></select>	
+			</div>
+			<div class="col-sm-6">
+				<label>Operação</label>
+				<select class='form-control selectpicker' id='idoperacao' name='idoperacao' data-live-search='true'></select>	
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button class='btn btn-success' type='submit'>Salvar</button>
+	</div>
+</form>
+<script src='js/cadastrar-acoes-form.js'></script>
