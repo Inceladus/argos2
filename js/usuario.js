@@ -8,13 +8,13 @@ var datatable = $('#datatable').DataTable( {
 		"type": "POST",
 		"data": function (d) {
 			d.classe = 'usuario';
-			d.metodo = 'obterTodos';
+			d.metodo = 'obterTodos'; 
 			d.token = token;
 		}
 	},
 	"columns": [
 		{ "data": "nome", "className": "details-control" },
-		{ "data": "orgao", "className": "details-control", "visible": true},
+		{ "data": "instituicao", "className": "details-control", "visible": true},
 		{ "data": "dt_update", "className": "details-control dt-body-right", "visible": false, "render": function(datetime) { return datetime_format(datetime,'d/m/y h:i')} }
 	],
 	"responsive": true,		

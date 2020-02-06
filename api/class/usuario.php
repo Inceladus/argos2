@@ -16,9 +16,10 @@ class usuario extends database {
 	}
 	
 	public function obterTodos() {
-		$sql = "SELECT idusuario, nome, orgao, email, u.idorgao, permissao, dt_update, ativado 
+		$sql = "SELECT idusuario, nome, o.instituicao,email, permissao, dt_update, ativado, dt_nascimento, cpf, rg
 		FROM usuario u
-		INNER JOIN orgao o on u.idorgao=o.idorgao";
+		INNER JOIN instituicao o on u.instituicao=o.idinstituicao;";
+		//$sql = "SELECT * FROM  usuario";
 	
 		if ( $rs = parent::fetch_all($sql) ) {
 			foreach ( $rs as $row ) {
@@ -33,18 +34,22 @@ class usuario extends database {
 	}
 
 	public function salvar() {
-		if ( @ $_REQUEST['orgao'] ) {
-			require_once ('class/orgao.php');
-			$_orgao = new orgao();
-			$orgao = $_orgao->salvar();
-			$_REQUEST['idorgao'] = $orgao['idorgao'];
+		if ( @ $_REQUEST['instituicao'] ) {
+			require_once ('class/instituicao.php');
+			$_instituicao = new instituicao();
+			$instituicao = $_instituicao->salvar();
+			$_REQUEST['idinstituicao'] = $instituicao['idinstituicao'];
 		}
 		
 		$this->idusuario = @ $_REQUEST['idusuario'];
 		$this->nome = (@ $_REQUEST['nome']);
+		$this->rg = (@ $_REQUEST['rg']);
+		$this->cpf = (@ $_REQUEST['cpf']);
 		$this->email = (@ $_REQUEST['email']);
-		$this->idorgao = @ $_REQUEST['idorgao'];
+		$this->dt_nascimento = @ $_REQUEST['dt_nascimento'];
 		$this->permissao = implode(',', @ $_REQUEST['permissao']);
+		$this->contato = @ $_REQUEST['contato'];
+		$this->instituicao = @ $_REQUEST['idinstituicao'];
 
 		if ( @ $_REQUEST['ativado'] ) $this->ativado = 'S';
 		else $this->ativado = 'N';

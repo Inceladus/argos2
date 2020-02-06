@@ -10,7 +10,7 @@ if ( data ) {
 }
 // listar Operacoes
 var sel_operacao = $('select[name="idoperacao"]');
-$.post( URI + '/api.php', {classe: "operacao", metodo: "obterTodos", token: token},function (result) {
+$.post( url + '/api.php', {classe: "operacao", metodo: "obterTodos", token: token},function (result) {
 	sel_operacao.append( $('<option>', {text: '-- Nova Operação --'}) );
 
 	if ( result.error ) result.data = [];

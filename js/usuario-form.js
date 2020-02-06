@@ -4,24 +4,26 @@ if ( data ) {
 	$('.modal-title').text('Usuário #'+data.idusuario);
 	$('input[name="idusuario"]').val(data.idusuario);
 	$('input[name="nome"]').val(data.nome);
+	$('input[name="rg"]').val(data.rg);
+	$('input[name="cpf"]').val(data.cpf);
 	$('input[name="email"]').val(data.email);
+	$('input[name="dt_nascimento"]').val(data.dt_nascimento);
 	$('input[name="contato"]').val(data.contato);
-	$('input[name="whatsapp"]').val(data.whatsapp);
+
 }
 
-// Select Picker para Orgao
-var select_1 = $('select[name="idorgao"]');
+// Select Picker para instituicao
+var select_1 = $('select[name="idinstituicao"]');
 // Carrega options
 $.ajax({
 	type: 'POST',
 	url: url+'/api.php',
-	data: {classe: "orgao", metodo: "obterTodos", token: token},
+	data: {classe: "instituicao", metodo: "obterTodos", token: token},
 	success: function(result) {	
 		if ( result.error ) result.data = [];
 
-		select_1.append( $('<option>', {text: '-- Novo orgão --'}) );
 		$.each( result.data, function(index, element) {
-			select_1.append( $('<option>', {value: element.idorgao, text: element.orgao}) );
+			select_1.append( $('<option>', {value: element.idinstituicao, text: element.instituicao}) );
 		});
 
 		select_1.html(select_1.find('option').sort(function(x, y) {
@@ -29,7 +31,7 @@ $.ajax({
 			return $(x).text() > $(y).text() ? 1 : -1;
 		}));
 
-		if (data) select_1.val(data.idorgao);
+		if (data) select_1.text(data.idinstituicao);
 		else select_1.val(null);
 
 		select_1.selectpicker();				
@@ -65,10 +67,10 @@ if ( data ) {
 	$('#btn-renovar-senha').hide();
 }			
 
-$('#idorgao').change( function() {
+$('#idinstituicao').change( function() {
 	if ($(this).val() == '-- Novo orgão --') {
-		$('#div-setor').html("<input class='form-control' type='text' id='orgao' name='orgao' placeholder='Escreva o nome do orgão' required>");
-		$('#orgao').focus();		
+		$('#div-setor').html("<input class='form-control' type='text' id='instituicao' name='instituicao' placeholder='Escreva o nome do orgão' required>");
+		$('#instituicao').focus();		
 	}
 });
 
