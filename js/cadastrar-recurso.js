@@ -7,15 +7,15 @@ var datatable = $('#datatable').DataTable( {
 		"dataSrc": function (json) { if (json.data) return json.data; else return false; },
 		"type": "POST",
 		"data": function (d) {
-			d.classe = 'usuario';
+			d.classe = 'recurso';
 			d.metodo = 'obterTodos';
 			d.token = token;
 		}
 	},
 	"columns": [
-		{ "data": "nome", "className": "details-control" },
-		{ "data": "orgao", "className": "details-control", "visible": true},
-		{ "data": "dt_update", "className": "details-control dt-body-right", "visible": false, "render": function(datetime) { return datetime_format(datetime,'d/m/y h:i')} }
+		{ "data": "idrecurso", "className": "details-control" },
+		{ "data": "recurso", "className": "details-control", "visible": true},
+		//{ "data": "dt_update", "className": "details-control dt-body-right", "visible": false, "render": function(datetime) { return datetime_format(datetime,'d/m/y h:i')} }
 	],
 	"responsive": true,		
 	"language": {
@@ -34,7 +34,7 @@ $('#btn-novo').click(function() {
 });
 
 function loadForm() {
-	$('.modal-content').load('partial/usuario-form.html', function(response,status) {
+	$('.modal-content').load('partial/cadastrar-recurso-form.html', function(response,status) {
 		if ( status == 'success' ) $('.modal').modal('show');
 	});
 }
