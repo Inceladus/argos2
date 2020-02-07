@@ -16,7 +16,7 @@ class usuario extends database {
 	}
 	
 	public function obterTodos() {
-		$sql = "SELECT idusuario, nome, o.instituicao,email, permissao, dt_update, ativado, dt_nascimento, cpf, rg
+		$sql = "SELECT idusuario, nome, o.instituicao,email, permissao, u.dt_update, ativado, dt_nascimento, cpf, rg
 		FROM usuario u
 		INNER JOIN instituicao o on u.instituicao=o.idinstituicao;";
 		//$sql = "SELECT * FROM  usuario";

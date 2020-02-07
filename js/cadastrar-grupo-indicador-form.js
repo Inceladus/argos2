@@ -1,13 +1,13 @@
 // Load Form
-$('.modal-title').text('Nova Instituição');
+$('.modal-title').text('Novo Grupo de Indicadores');
 if ( data ) {
-	$('.modal-title').text('Instituição #'+data.idinstituicao);
-	$('input[name="idinstituicao"]').val(data.idinstituicao);
-	$('input[name="instituicao"]').val(data.instituicao);
+	$('.modal-title').text('Grupo de Indicadores #'+data.idgrupo_indicador);
+	$('input[name="idgrupo_indicador"]').val(data.idgrupo_indicador);
+	$('input[name="nome_grupo"]').val(data.nome_grupo);
 }
 $('form').submit(function(){
 	var formData = $(this).serializeArray();
-	formData.push({name: 'classe', value: 'instituicao'});
+	formData.push({name: 'classe', value: 'grupo_indicador'});
 	formData.push({name: 'metodo', value: 'salvar'});
 	formData.push({name: 'token', value: token});
 	$.ajax({
@@ -19,8 +19,8 @@ $('form').submit(function(){
 				alert(result.error);
 			} else {
 				console.log(result);
-				$('input[name="idinstituicao"]').val(result.idinstituicao);
-				alert('Instituição ID '+result.idinstituicao+' gravado!');
+				$('input[name="idgrupo_indicador"]').val(result.idgrupo_indicador);
+				alert('Grupo de Indicador ID '+result.idgrupo_indicador+' gravado!');
 				datatable.ajax.reload(null, false);
 			}
 		}

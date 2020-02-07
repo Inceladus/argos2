@@ -43,8 +43,8 @@ $('form').submit(function(){
 				alert(result.error);
 			} else {
 				console.log(result);
-				$('input[name="idoperacao"]').val(result.idoperacao);
-				alert('Operação ID '+result.idoperacao+' gravado!');
+				$('input[name="idoacao"]').val(result.idoacao);
+				alert('Ação ID '+result.idacao+' gravado!');
 				datatable.ajax.reload(null, false);
 			}
 		}

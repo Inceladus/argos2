@@ -10,7 +10,7 @@
 		},
 		{"label": "Administração",
 			"subitems": [
-				{ "id": "cadastrar-orgao", "label": "Cadastrar Instituição"},
+				{ "id": "cadastrar-instituicao", "label": "Cadastrar Instituição"},
 				{ "id": "cadastrar-recurso", "label": "Cadastrar Recursos" },
 				{ "id": "cadastrar-grupo-indicador", "label": "Cadastrar Grupo de Indicador" },
 				{ "id": "cadastrar-indicador", "label": "Cadastrar Indicador" },

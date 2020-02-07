@@ -9,11 +9,31 @@ if ( data ) {
 	$('input[name="email"]').val(data.email);
 	$('input[name="dt_nascimento"]').val(data.dt_nascimento);
 	$('input[name="contato"]').val(data.contato);
-
+	$('select[name="idinstituicao"]').val(data.instituicao);
 }
 
 // Select Picker para instituicao
 var select_1 = $('select[name="idinstituicao"]');
+
+// listar instituicoes
+$.post( url + '/api.php', {classe: "instituicao", metodo: "obterTodos", token: token},function (result) {
+
+	if ( result.error ) result.data = [];
+	$.each( result.data, function(i, field) {
+		select_1.append( $('<option>', {text: field.instituicao}) );
+	});
+	
+	select_1.html(select_1.find('option').sort(function(x, y) {
+		// to descending order switch "<" for ">"
+		return $(x).text() > $(y).text() ? 1 : -1;
+	}));
+
+	if (data) select_1.val(data.instituicao);
+	else select_1.val(null);
+	
+	select_1.selectpicker();				
+});
+
 // Carrega options
 $.ajax({
 	type: 'POST',
@@ -70,7 +90,7 @@ if ( data ) {
 $('#idinstituicao').change( function() {
 	if ($(this).val() == '-- Novo orgão --') {
 		$('#div-setor').html("<input class='form-control' type='text' id='instituicao' name='instituicao' placeholder='Escreva o nome do orgão' required>");
-		$('#instituicao').focus();		
+		$('#instituicao').focus();
 	}
 });
 
