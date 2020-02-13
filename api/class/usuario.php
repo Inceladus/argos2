@@ -16,11 +16,10 @@ class usuario extends database {
 	}
 	
 	public function obterTodos() {
-		$sql = "SELECT idusuario, nome, o.instituicao,email, permissao, u.dt_update, ativado, dt_nascimento, cpf, rg
+		$sql = "SELECT idusuario, nome, u.idinstituicao, instituicao, email, contato, permissao, u.dt_update, ativado
 		FROM usuario u
-		INNER JOIN instituicao o on u.instituicao=o.idinstituicao;";
-		//$sql = "SELECT * FROM  usuario";
-	
+		INNER JOIN instituicao o on u.idinstituicao=o.idinstituicao";
+
 		if ( $rs = parent::fetch_all($sql) ) {
 			foreach ( $rs as $row ) {
 				$col = array();

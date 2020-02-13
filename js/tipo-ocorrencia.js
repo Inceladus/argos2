@@ -1,4 +1,4 @@
-$('title').text('Cadastro de Indicador');
+$('title').text('Cadastro de Operação');
 
 var datatable = $('#datatable').DataTable( {
 	"ajax": {
@@ -7,16 +7,15 @@ var datatable = $('#datatable').DataTable( {
 		"dataSrc": function (json) { if (json.data) return json.data; else return false; },
 		"type": "POST",
 		"data": function (d) {
-			d.classe = 'indicador';
+			d.classe = 'ocorrencia';
 			d.metodo = 'obterTodos';
 			d.token = token;
 		}
 	},
 	"columns": [
-		{ "data": "idindicador", "className": "details-control" },
-		{ "data": "indicador", "className": "details-control", "visible": true},
-		{ "data": "nome_grupo", "className": "details-control", "visible": true},
-		{ "data": "dt_update", "className": "details-control dt-body-right", "visible": true, "render": function(datetime) { return datetime_format(datetime,'d/m/y h:i')} }
+		{ "data": "idocorrencia", "className": "details-control" },
+		{ "data": "ocorrencia", "className": "details-control", "visible": true},
+		{ "data": "dt_update", "className": "details-control dt-body-right", "render": function(datetime) { return datetime_format(datetime,'d/m/y h:i')} }
 	],
 	"responsive": true,		
 	"language": {
@@ -35,7 +34,7 @@ $('#btn-novo').click(function() {
 });
 
 function loadForm() {
-	$('.modal-content').load('partial/cadastrar-indicador-form.html', function(response,status) {
+	$('.modal-content').load('partial/tipo-ocorrencia-form.html', function(response,status) {
 		if ( status == 'success' ) $('.modal').modal('show');
 	});
 }

@@ -5,7 +5,11 @@
 	</div>
 	<div class="modal-body">
 		<input type='hidden' name='idacao'>
-		<div class='form-group'>
+		<div>
+				<label>Operação</label>
+				<select class='form-control selectpicker' id='idoperacao' name='idoperacao' data-live-search='true' required></select>	
+		</div>		
+		<div>
 			<label for='nome_acao'>Nome da Ação</label>
 			<input class='form-control' type='text' id='nome_acao' name='nome_acao' placeholder='Digite o nome da operacao' required>
 		</div>
@@ -29,22 +33,32 @@
 				<input class='form-control' type='time' id='hr_termino' name='hr_termino' required>
 			</div>
 		</div>
-		
-		<!-- Latitude e Longitude -->
-
+		<br>
+		<!-- Latitude e Longitude --> 
+		<div id = "map" style="width: 100%; height: 400px"></div>
+		<br>
 		<div class="row">
 			<div class="col-sm-6">
-				<label>Status da Ação</label>
-				<select class='form-control selectpicker' id='status' name='status' data-live-search='true'></select>	
+				<label>Latitude</label>
+				<input class='form-control' id='lat' name='lat' readonly required>
 			</div>
 			<div class="col-sm-6">
-				<label>Operação</label>
-				<select class='form-control selectpicker' id='idoperacao' name='idoperacao' data-live-search='true'></select>	
+				<label>Longitude</label>
+				<input class='form-control' id='lng' name='lng' readonly required>
 			</div>
 		</div>
+		
+		<div>
+			<label>Status da Ação</label>
+			<div id="div-status">
+				<select class='form-control selectpicker' id='status' name='status' data-live-search='true'></select>
+			</div>	
+		</div>
+
 	</div>
 	<div class="modal-footer">
 		<button class='btn btn-success' type='submit'>Salvar</button>
 	</div>
 </form>
+
 <script src='js/cadastrar-acoes-form.js'></script>

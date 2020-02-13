@@ -25,6 +25,12 @@ var datatable = $('#datatable').DataTable( {
 	}
 });
 
+var loadForm = function() {
+	$('.modal-content').load('partial/cadastrar-acoes-form.html', function(response,status) {
+		if ( status == 'success' ) $('.modal').modal('show');
+	});
+}
+
 $('#datatable tbody').on('click', 'tr', function () {
 	data = datatable.row( this ).data();
 	loadForm();
@@ -34,9 +40,3 @@ $('#btn-novo').click(function() {
 	data = null;
 	loadForm();
 });
-
-function loadForm() {
-	$('.modal-content').load('partial/cadastrar-acoes-form.html', function(response,status) {
-		if ( status == 'success' ) $('.modal').modal('show');
-	});
-}
