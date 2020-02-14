@@ -1,6 +1,6 @@
 <?php
 
-class acao_indicador extends database {
+class acao extends database {
 	
 	public function obterTodos() {
 		$sql = "SELECT idacao, nome_acao, dt_inicio, dt_termino, hr_inicio, hr_termino, latitude, longitude, status, 
