@@ -12,8 +12,28 @@ if ( data ) {
 	$('input[name="status"]').val(data.status);
 	$('input[name="lat"]').val(data.latitude);
 	$('input[name="lng"]').val(data.longitude);
-}
 
+	$('#indicador-tab').click(function(){
+		$('#indicador').load('partial/acao-indicador-form.html');
+	});
+	$('#instituicao-tab').click(function(){
+		$('#instituicao').load('partial/acao-instituicao-form.html');
+	});
+	$('#ocorrencia-tab').click(function(){
+		$('#ocorrencia').load('partial/acao-ocorrencia-form.html');
+	});
+	$('#recurso-tab').click(function(){
+		$('#recurso').load('partial/acao-recurso-form.html');
+	});
+	$('#status-tab').click(function(){
+		$('#status').load('partial/acao-status-form.html');
+	});
+}else{
+	$('#indicador-tab').hide();
+	$('#ocorrencia-tab').hide();
+	$('#recurso-tab').hide();
+	$('#status-tab').hide();
+}
 
 /* Operação */ 
 //Select Picker para operacao
