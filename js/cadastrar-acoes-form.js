@@ -3,6 +3,7 @@ $('.modal-title').text('Nova Ação');
 
 if ( data ) {
 	$('.modal-title').text('Ação #'+data.idacao);
+	$('input[name="idacao"]').val(data.idacao);
 	$('input[name="nome_acao"]').val(data.nome_acao);
 	$('input[name="dt_inicio"]').val(data.dt_inicio);
 	$('input[name="dt_termino"]').val(data.dt_termino);

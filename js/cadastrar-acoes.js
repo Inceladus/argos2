@@ -14,10 +14,10 @@ var datatable = $('#datatable').DataTable( {
 	},
 	"columns": [
 		{ "data": "nome_acao", "className": "details-control" },
-		{ "data": "dt_inicio", "className": "details-control dt-body-right", "visible": true, "render": function(datetime) { return datetime_format(datetime,'d/m/y')} },
-		{ "data": "dt_termino", "className": "details-control dt-body-right", "visible": true, "render": function(datetime) { return datetime_format(datetime,'d/m/y')} },
+		{ "data": "dt_inicio", "className": "details-control", "visible": true, "render": function(datetime) { return datetime_format(datetime,'d/m/y')} },
+		{ "data": "dt_termino", "className": "details-control", "visible": true, "render": function(datetime) { return datetime_format(datetime,'d/m/y')} },
 		{ "data": "status", "className": "details-control", "visible": true},
-		{ "data": "idoperacao", "className": "details-control", "visible": true}
+		{ "data": "nome_operacao", "className": "details-control", "visible": true}
 	],
 	"responsive": true,		
 	"language": {

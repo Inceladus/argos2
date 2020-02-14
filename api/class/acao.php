@@ -3,7 +3,11 @@
 class acao extends database {
 	
 	public function obterTodos() {
-		$sql = "SELECT idacao, nome_acao, dt_inicio, dt_termino, status, idoperacao, latitude, longitude FROM acao";
+		$sql = "SELECT idacao, nome_acao, dt_inicio, dt_termino, hr_inicio, hr_termino, latitude, longitude, status, 
+			a.idoperacao, o.nome_operacao
+			FROM acao a
+			INNER JOIN operacao o
+			ON a.idoperacao = o.idoperacao";
 	
 		if ( $rs = parent::fetch_all($sql) ) {
 			foreach ( $rs as $row ) {
