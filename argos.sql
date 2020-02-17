@@ -24,28 +24,34 @@ CREATE TABLE IF NOT EXISTS `acao` (
   `dt_termino` date DEFAULT NULL,
   `hr_inicio` time DEFAULT NULL,
   `hr_termino` time DEFAULT NULL,
-  `latitude` decimal(10,8) DEFAULT NULL,
-  `longitude` decimal(11,8) DEFAULT NULL,
+  `latitude` decimal(10,8) NOT NULL DEFAULT 0.00000000,
+  `longitude` decimal(11,8) NOT NULL DEFAULT 0.00000000,
   `status` varchar(30) DEFAULT NULL,
   `idoperacao` int(11) NOT NULL,
   PRIMARY KEY (`idacao`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela argosbd.acao: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela argosbd.acao: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `acao` DISABLE KEYS */;
+INSERT INTO `acao` (`idacao`, `nome_acao`, `dt_inicio`, `dt_termino`, `hr_inicio`, `hr_termino`, `latitude`, `longitude`, `status`, `idoperacao`) VALUES
+	(1, 'Ação 1', '2020-02-12', '2020-02-12', '01:00:00', '20:00:00', -1.40662350, -48.46104675, 'Status 2', 1),
+	(2, 'Ação 2', '2020-02-12', '2020-02-12', '01:00:00', '20:00:00', -1.40662350, -48.46104675, 'Status 3', 2),
+	(3, 'Ação 3', '2020-02-12', '2020-02-12', '01:00:00', '20:00:00', -1.40662350, -48.46104675, 'Status 1', 2);
 /*!40000 ALTER TABLE `acao` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela argosbd.acao_indicador
 CREATE TABLE IF NOT EXISTS `acao_indicador` (
-  `idacao_indicadro` int(11) NOT NULL AUTO_INCREMENT,
+  `idacao_indicador` int(11) NOT NULL AUTO_INCREMENT,
   `idindicador` int(11) NOT NULL,
   `idacao` int(11) NOT NULL,
   `quantidade` int(11) DEFAULT NULL,
-  PRIMARY KEY (`idacao_indicadro`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`idacao_indicador`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- Copiando dados para a tabela argosbd.acao_indicador: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `acao_indicador` DISABLE KEYS */;
+INSERT INTO `acao_indicador` (`idacao_indicador`, `idindicador`, `idacao`, `quantidade`) VALUES
+	(1, 1, 1, 1);
 /*!40000 ALTER TABLE `acao_indicador` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela argosbd.acao_instituicao
@@ -126,10 +132,10 @@ CREATE TABLE IF NOT EXISTS `indicador` (
   PRIMARY KEY (`idindicador`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela argosbd.indicador: ~4 rows (aproximadamente)
+-- Copiando dados para a tabela argosbd.indicador: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `indicador` DISABLE KEYS */;
 INSERT INTO `indicador` (`idindicador`, `indicador`, `idgrupo_indicador`, `dt_update`) VALUES
-	(1, 'Indicador 1', 1, '2020-02-10 10:45:55'),
+	(1, 'Indicador 1', 1, '2020-02-12 12:10:57'),
 	(2, 'Indicador 2', 2, '2020-02-10 10:29:56'),
 	(3, 'Indicador 3', 3, '2020-02-10 11:01:43'),
 	(4, 'Indicador 4', 4, '2020-02-10 11:10:13');
@@ -177,12 +183,15 @@ CREATE TABLE IF NOT EXISTS `municipio_acao` (
 -- Copiando estrutura para tabela argosbd.ocorrencia
 CREATE TABLE IF NOT EXISTS `ocorrencia` (
   `idocorrencia` int(11) NOT NULL AUTO_INCREMENT,
-  `ocorrencia` varchar(60) DEFAULT NULL,
+  `ocorrencia` varchar(60) NOT NULL,
+  `dt_update` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`idocorrencia`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- Copiando dados para a tabela argosbd.ocorrencia: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `ocorrencia` DISABLE KEYS */;
+INSERT INTO `ocorrencia` (`idocorrencia`, `ocorrencia`, `dt_update`) VALUES
+	(1, 'Ocorrência 1', '2020-02-11 08:59:44');
 /*!40000 ALTER TABLE `ocorrencia` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela argosbd.operacao
@@ -256,9 +265,9 @@ CREATE TABLE IF NOT EXISTS `transacao` (
   `idusuario` int(11) NOT NULL,
   `dt_transacao` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`idtransacao`)
-) ENGINE=InnoDB AUTO_INCREMENT=115 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=156 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela argosbd.transacao: ~114 rows (aproximadamente)
+-- Copiando dados para a tabela argosbd.transacao: ~130 rows (aproximadamente)
 /*!40000 ALTER TABLE `transacao` DISABLE KEYS */;
 INSERT INTO `transacao` (`idtransacao`, `transacao`, `idusuario`, `dt_transacao`) VALUES
 	(1, 'Entrou', 1, '2020-01-20 11:19:42'),
@@ -374,7 +383,48 @@ INSERT INTO `transacao` (`idtransacao`, `transacao`, `idusuario`, `dt_transacao`
 	(111, 'alterou indicador ID 3', 1, '2020-02-10 11:01:43'),
 	(112, 'alterou indicador ID 4', 1, '2020-02-10 11:01:47'),
 	(113, 'Entrou', 1, '2020-02-10 11:09:54'),
-	(114, 'alterou indicador ID 4', 1, '2020-02-10 11:10:13');
+	(114, 'alterou indicador ID 4', 1, '2020-02-10 11:10:13'),
+	(115, 'Entrou', 1, '2020-02-10 15:46:02'),
+	(116, 'alterou operacao ID 1', 1, '2020-02-10 15:46:20'),
+	(117, 'alterou operacao ID 1', 1, '2020-02-10 15:46:26'),
+	(118, 'Entrou', 1, '2020-02-10 16:06:18'),
+	(119, 'Entrou', 1, '2020-02-10 16:16:33'),
+	(120, 'Entrou', 1, '2020-02-11 08:51:18'),
+	(121, 'inserir ocorrencia ID 1', 1, '2020-02-11 08:59:44'),
+	(122, 'alterou ocorrencia ID 1', 1, '2020-02-11 08:59:49'),
+	(123, 'alterou ocorrencia ID 1', 1, '2020-02-11 08:59:53'),
+	(124, 'inserir usuario ID 2', 1, '2020-02-11 09:11:52'),
+	(125, 'alterou usuario ID 1', 1, '2020-02-11 09:15:31'),
+	(126, 'alterou usuario ID 1', 1, '2020-02-11 09:15:36'),
+	(127, 'Entrou', 1, '2020-02-11 09:24:25'),
+	(128, 'alterou usuario ID 1', 1, '2020-02-11 09:35:59'),
+	(129, 'alterou indicador ID 1', 1, '2020-02-11 09:44:50'),
+	(130, 'alterou indicador ID 1', 1, '2020-02-11 09:44:55'),
+	(131, 'Entrou', 1, '2020-02-11 12:30:13'),
+	(132, 'Entrou', 1, '2020-02-11 14:32:22'),
+	(133, 'Entrou', 1, '2020-02-12 10:32:15'),
+	(134, 'Entrou', 1, '2020-02-12 11:12:21'),
+	(135, 'Entrou', 1, '2020-02-12 12:10:43'),
+	(136, 'alterou indicador ID 1', 1, '2020-02-12 12:10:52'),
+	(137, 'alterou indicador ID 1', 1, '2020-02-12 12:10:57'),
+	(138, 'Entrou', 1, '2020-02-12 13:34:40'),
+	(139, 'Entrou', 1, '2020-02-12 14:39:41'),
+	(140, 'Entrou', 1, '2020-02-12 15:42:48'),
+	(141, 'inserir acao ID 1', 1, '2020-02-12 15:43:38'),
+	(142, 'Entrou', 1, '2020-02-13 10:25:16'),
+	(143, 'inserir acao ID 2', 1, '2020-02-13 10:35:18'),
+	(144, 'inserir acao ID 3', 1, '2020-02-13 10:36:27'),
+	(145, 'alterou acao ID 2', 1, '2020-02-13 10:36:59'),
+	(146, 'alterou acao ID 3', 1, '2020-02-13 10:37:05'),
+	(147, 'alterou acao ID 1', 1, '2020-02-13 10:38:14'),
+	(148, 'alterou acao ID 2', 1, '2020-02-13 10:38:32'),
+	(149, 'Entrou', 1, '2020-02-13 11:30:49'),
+	(150, 'Entrou', 1, '2020-02-13 14:32:20'),
+	(151, 'Entrou', 1, '2020-02-13 15:13:54'),
+	(152, 'Entrou', 1, '2020-02-14 10:41:41'),
+	(153, 'Entrou', 1, '2020-02-14 11:47:02'),
+	(154, 'Entrou', 1, '2020-02-14 12:54:31'),
+	(155, 'Entrou', 1, '2020-02-14 13:56:30');
 /*!40000 ALTER TABLE `transacao` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela argosbd.usuario
@@ -388,16 +438,16 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `senha` varchar(50) NOT NULL DEFAULT '0',
   `permissao` text NOT NULL DEFAULT '0',
   `contato` varchar(50) NOT NULL DEFAULT '0',
-  `instituicao` int(11) NOT NULL,
+  `idinstituicao` int(11) NOT NULL,
   `ativado` char(1) NOT NULL DEFAULT 'S',
   `dt_update` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`idusuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela argosbd.usuario: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela argosbd.usuario: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` (`idusuario`, `nome`, `rg`, `cpf`, `email`, `dt_nascimento`, `senha`, `permissao`, `contato`, `instituicao`, `ativado`, `dt_update`) VALUES
-	(1, 'Administrador', '2', '1', 'admin@admin.com', '2020-02-04', '21232f297a57a5a743894a0e4a801fc3', 'cadastrar-operacao,cadastrar-acoes,cadastrar-produtividade,cadastrar-instituicao,cadastrar-recurso,cadastrar-grupo-indicador,cadastrar-indicador,tipo-ocorrencia,usuario,mudasenha', '1', 3, 'S', '2020-02-07 14:51:59');
+INSERT INTO `usuario` (`idusuario`, `nome`, `rg`, `cpf`, `email`, `dt_nascimento`, `senha`, `permissao`, `contato`, `idinstituicao`, `ativado`, `dt_update`) VALUES
+	(1, 'Administrador', '2', '1', 'admin@admin.com', '2020-02-04', '21232f297a57a5a743894a0e4a801fc3', 'cadastrar-operacao,cadastrar-acoes,cadastrar-produtividade,cadastrar-instituicao,cadastrar-recurso,cadastrar-grupo-indicador,cadastrar-indicador,tipo-ocorrencia,usuario,mudasenha', '1', 1, 'S', '2020-02-11 09:35:59');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

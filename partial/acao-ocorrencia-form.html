@@ -1,1 +1,19 @@
-<h1>Ocorrencia</h1>
+<form role="form" class="container">
+	<input type='hidden' name='idacao_ocorrencia'>
+    <input type='hidden' name='idacao'>
+    <div class='form-group'>
+		<label for='idocorrencia'>Ocorrência:</label>
+		<div id='div-ocorrencia'>
+			<select class='form-control selectpicker' id='idocorrencia' name='idocorrencia' data-live-search='true' required></select>
+		</div>
+	</div>
+	<div class="form-group">
+		<label>Quantidade</label>
+		<input type="number" class="form-control" name="quantidade" placeholder="Digite a quantidade" required>
+    </div>
+    <div class='form-group'>
+        <label>Observação</label>
+        <textarea class="form-control" id='observacao' rows="2" placeholder="Digite uma Observação"></textarea>
+    </div>
+</form>
+<script type="text/javascript" src="js/acao-ocorrencia-form.js"></script>

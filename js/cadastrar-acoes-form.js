@@ -1,5 +1,9 @@
 // Load Form
 $('.modal-title').text('Nova Ação');
+$('#indicador-tab').hide();
+$('#ocorrencia-tab').hide();
+$('#recurso-tab').hide();
+$('#status-tab').hide();
 
 if ( data ) {
 	$('.modal-title').text('Ação #'+data.idacao);
@@ -13,26 +17,26 @@ if ( data ) {
 	$('input[name="lat"]').val(data.latitude);
 	$('input[name="lng"]').val(data.longitude);
 
+	$('#indicador-tab').show();
+	$('#ocorrencia-tab').show();
+	$('#recurso-tab').show();
+	$('#status-tab').show();
+
 	$('#indicador-tab').click(function(){
-		$('#indicador').load('partial/acao-indicador-form.html');
+		$('#indicador').load('partial/acao-indicador.html');
 	});
 	$('#instituicao-tab').click(function(){
-		$('#instituicao').load('partial/acao-instituicao-form.html');
+		$('#instituicao').load('partial/acao-instituicao.html');
 	});
 	$('#ocorrencia-tab').click(function(){
-		$('#ocorrencia').load('partial/acao-ocorrencia-form.html');
+		$('#ocorrencia').load('partial/acao-ocorrencia.html');
 	});
 	$('#recurso-tab').click(function(){
-		$('#recurso').load('partial/acao-recurso-form.html');
+		$('#recurso').load('partial/acao-recurso.html');
 	});
 	$('#status-tab').click(function(){
-		$('#status').load('partial/acao-status-form.html');
+		$('#status').load('partial/acao-status.html');
 	});
-}else{
-	$('#indicador-tab').hide();
-	$('#ocorrencia-tab').hide();
-	$('#recurso-tab').hide();
-	$('#status-tab').hide();
 }
 
 /* Operação */ 

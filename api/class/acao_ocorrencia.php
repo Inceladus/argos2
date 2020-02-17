@@ -1,6 +1,6 @@
 <?php
 
-class acao_indicador extends database {
+class acao_ocorrencia extends database {
 	
 	public function obterTodos() {
 		$sql = "SELECT idacao_indicador, a_i.idindicador, i.indicador, a.nome_acao ,a_i.idacao, quantidade
@@ -23,21 +23,22 @@ class acao_indicador extends database {
 	}
 
 	public function salvar() {
-		global $_user;
-		$this->idacao_instituicao = @ $_REQUEST['idacao_instituicao'];
-		$this->idinstituicao = @ $_REQUEST['idinstituicao'];
+		$this->idacao_ocorrencia = @ $_REQUEST['idacao_ocorrencia'];
 		$this->idacao = @ $_REQUEST['idacao'];
-		$this->responsavel = $_user->idusuario;
+		$this->idocorrencia = @ $_REQUEST['idocorrencia'];
+		$this->quantidade = @ $_REQUEST['quantidade'];
+		$this->observacao = @ $_REQUEST['observacao'];
 		if ( $this->idacao_instituicao ) {
 			$this->update();
-			$this->saveLog('alterou acao_instituicao ID '.$this->idacao_instituicao, $_user->idusuario);
-		} else {
-			$this->idacao_indicador = $this->insert();
 			global $_user;
-			$this->saveLog('inserir acao_instituicao ID '.$this->idacao_instituicao, $_user->idusuario);
+			$this->saveLog('alterou acao_ocorrencia ID '.$this->idacao_ocorrencia, $_user->idusuario);
+		} else {
+			$this->idacao_ocorrencia = $this->insert();
+			global $_user;
+			$this->saveLog('inserir acao_ocorrencia ID '.$this->idacao_ocorrencia, $_user->idusuario);
 		}
 		
-		return array ( 'idacao_instituicao' => $this->idacao_instituicao );
+		return array ( 'idacao_ocorrencia' => $this->idacao_ocorrencia );
 	}
 }
 ?>
