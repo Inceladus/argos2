@@ -3,14 +3,10 @@
 class indicador extends database {
 
 	public function obterTodos() {
-// 		$sql = "SELECT idindicador, indicador, g.nome_grupo, i.dt_update FROM 
-// indicador AS i
-// INNER JOIN grupo_indicador AS g
-// ON g.idgrupo_indicador = i.idgrupo_indicador";
 		$sql = "SELECT idindicador, indicador, i.idgrupo_indicador,g.nome_grupo, i.dt_update 
-FROM indicador i
-INNER JOIN grupo_indicador g
-WHERE i.idgrupo_indicador = g.idgrupo_indicador";
+			FROM indicador i
+			INNER JOIN grupo_indicador g
+			WHERE i.idgrupo_indicador = g.idgrupo_indicador";
 	
 		if ( $rs = parent::fetch_all($sql) ) {
 			foreach ( $rs as $row ) {
@@ -23,24 +19,6 @@ WHERE i.idgrupo_indicador = g.idgrupo_indicador";
 			return array( 'data' => $rows );
 		}
 	} 
-
-	// public function salvar() {
-	// 	$this->idindicador = @ $_REQUEST['idindicador'];
-	// 	$this->indicador = @ $_REQUEST['indicador'];
-	// 	$this->idgrupo_indicador = @ $_REQUEST['idgrupo_indicador'];
-		
-	// 	if ( $this->idindicador ) {
-	// 		$this->update();	
-	// 		global $_user;
-	// 		$this->saveLog('alterou indicador ID '.$this->idindicador, $_user->idusuario);
-	// 	} else {
-	// 			$this->insert();
-	// 			global $_user;
-	// 			$this->saveLog('inserir indicador ID '.$this->idindicador, $_user->idusuario);
-	// 	}
-		
-	// 	return array ( 'idindicador' => $this->idindicador, 'indicador' => $this->indicador, 'idgrupo_indicador' => $this->idgrupo_indicador );
-	// }
 	public function salvar() {
 		$this->idindicador = @ $_REQUEST['idindicador'];
 		$this->indicador = @ $_REQUEST['indicador'];

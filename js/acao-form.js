@@ -1,13 +1,13 @@
 if (data) {
-	$('input[name="idacao"]').val(data.idacao);
-	$('input[name="nome_acao"]').val(data.nome_acao);
-	$('input[name="dt_inicio"]').val(data.dt_inicio);
-	$('input[name="dt_termino"]').val(data.dt_termino);
-	$('input[name="hr_inicio"]').val(data.hr_inicio);
-	$('input[name="hr_termino"]').val(data.hr_termino);
-	$('input[name="status"]').val(data.status);
-	$('input[name="lat"]').val(data.latitude);
-	$('input[name="lng"]').val(data.longitude);
+	$('input[name="idacao"]').val(data.aidacao);
+	$('input[name="nome_acao"]').val(data.anome_acao);
+	$('input[name="dt_inicio"]').val(data.adt_inicio);
+	$('input[name="dt_termino"]').val(data.adt_termino);
+	$('input[name="hr_inicio"]').val(data.ahr_inicio);
+	$('input[name="hr_termino"]').val(data.ahr_termino);
+	$('input[name="status"]').val(data.astatus);
+	$('input[name="lat"]').val(data.alatitude);
+	$('input[name="lng"]').val(data.alongitude);
 }
 
 /* Operação */ 
@@ -28,7 +28,7 @@ $.ajax({
 			return $(x).text() > $(y).text() ? 1 : -1;
 		}));
 
-		if (data) selectOperacao.val(data.idoperacao);
+		if (data) selectOperacao.val(data.aidoperacao);
 		else selectOperacao.val(null);	
 
 		selectOperacao.selectpicker();				
@@ -42,8 +42,8 @@ var lng = -53.105999;
 var zoom = 5;
 
 if (data) {
-	lat = data.latitude;
-	lng = data.longitude;
+	lat = data.alatitude;
+	lng = data.alongitude;
 	zoom = 16;
 }
 

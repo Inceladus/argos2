@@ -13,15 +13,23 @@ var datatable = $('#datatable').DataTable( {
 		}
 	},
 	"columns": [
-		{ "data": "nome_acao", "className": "details-control" },
-		{ "data": "dt_inicio", "className": "details-control", "visible": true, "render": function(datetime) { return datetime_format(datetime,'d/m/y')} },
-		{ "data": "dt_termino", "className": "details-control", "visible": true, "render": function(datetime) { return datetime_format(datetime,'d/m/y')} },
-		{ "data": "status", "className": "details-control", "visible": true},
+		{ "data": "anome_acao", "className": "details-control" },
+		{ "data": "adt_inicio", "className": "details-control", "visible": true, "render": function(datetime) { return datetime_format(datetime,'d/m/y')} },
+		{ "data": "adt_termino", "className": "details-control", "visible": true, "render": function(datetime) { return datetime_format(datetime,'d/m/y')} },
+		{ "data": "astatus", "className": "details-control", "visible": true},
 		{ "data": "nome_operacao", "className": "details-control", "visible": true}
 	],
 	"responsive": true,		
 	"language": {
 		"url": "lib/datatables/Portuguese-Brasil.lang"
+	}
+});
+
+$.ajax({
+	url: url + '/api.php',
+	data: {classe: 'acao', metodo: 'obterTodos', token: token},
+	success: function(result){
+		console.log(result);
 	}
 });
 

@@ -1,15 +1,15 @@
-//Requisitar dados
-$.ajax({
-	url: url + '/api.php',
-	data: {classe: 'acao_indicador', metodo: 'obterTodos', token: token},
-	success: function(result){
-		$('input[name="idacao_indicador"]').val(result.data[0].idacao_indicador);
-		$('input[name="idacao"]').val(result.data[0].idacao);
-		$('input[name="idindicador"]').val(result.data[0].idindicador);
-		$('input[name="quantidade"]').val(result.data[0].quantidade);
-		console.log(result.data[0].quantidade);
-	}
-});
+// //Requisitar dados
+// $.ajax({
+// 	url: url + '/api.php',
+// 	data: {classe: 'acao_indicador', metodo: 'obterTodos', token: token},
+// 	success: function(result){
+// 		$('input[name="idacao_indicador"]').val(result.data[0].idacao_indicador);
+// 		$('input[name="idacao"]').val(result.data[0].idacao);
+// 		$('input[name="idindicador"]').val(result.data[0].idindicador);
+// 		$('input[name="quantidade"]').val(result.data[0].quantidade);
+// 		console.log(result.data[0].quantidade);
+// 	}
+// });
 
 //Listar indicadores
 //Select Picker para indicador

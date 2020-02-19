@@ -53,63 +53,12 @@ if ( sessionStorage.getItem('token') ) {
 		$('.navbar-collapse').collapse('hide');		
 	});
 
-	//$('.m_todas').html(5);
-/*
-	$.post( URI + '/api.php', {classe: "solicitacao", metodo: "contarSolicitacoes", token: token},function (result) {
-		$.each( result.data, function(i, field) {
-			$('.s_total').text(field.total);
-			$('.s_aberto').text(field.aberto);
-			$('.s_aguardando').text(field.aguardando);
-			$('.s_finalizado').text(field.finalizado);
-
-			var ctx = $('.charts-1');
-			//Type, Data'
-			var chatsGraph = new Chart(ctx,{
-				type: 'pie',
-				data: {
-					datasets: [{
-						data: [
-							field.aberto,
-							field.aguardando,
-							field.finalizado
-						],
-						backgroundColor: [
-							'red',
-							'green',
-							'blue'
-						]
-					}],
-					labels: [
-						"Em Aberto",
-						"Aguardando Atendimento",
-						"Finalizadas"
-					]
-				},
-				options: {
-					responsive: true,
-					legend: {
-						position: 'bottom',
-					},
-					title: {
-						display: true,
-						text: 'Atendimentos'
-					},
-					animation: {
-						animateScale: true,
-						animateRotate: true
-					}
-				}
-			});
-		});
-	});
-*/
-
 } else {
 
 	// Token não existe na sessionStorage
 	$('nav').hide()
 	$('main').hide();
-	$('title').text('181 - Acesso restrito');
+	$('title').text('ARGOS - Acesso restrito');
 	$('.modal-content').load('partial/login.html');
 	$('.modal-content').css('width','320px');
 	$('.modal').modal('show');

@@ -3,7 +3,7 @@ $('.modal-title').text('Nova Ação');
 $('#tabs').hide();
 $('#acao-form').load('partial/acao-form.html');
 if ( data ) {
-	$('.modal-title').text('Ação #'+data.idacao);
+	$('.modal-title').text('Ação #'+data.aidacao);
 	
 	$('#tabs').show();
 	$('#acao-form').hide();
