@@ -16,7 +16,7 @@ var datatable = $('#datatable').DataTable( {
 		{ "data": "anome_acao", "className": "details-control" },
 		{ "data": "adt_inicio", "className": "details-control", "visible": true, "render": function(datetime) { return datetime_format(datetime,'d/m/y')} },
 		{ "data": "adt_termino", "className": "details-control", "visible": true, "render": function(datetime) { return datetime_format(datetime,'d/m/y')} },
-		{ "data": "astatus", "className": "details-control", "visible": true},
+		{ "data": "status", "className": "details-control", "visible": true},
 		{ "data": "nome_operacao", "className": "details-control", "visible": true}
 	],
 	"responsive": true,		

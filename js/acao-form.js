@@ -5,10 +5,43 @@ if (data) {
 	$('input[name="dt_termino"]').val(data.adt_termino);
 	$('input[name="hr_inicio"]').val(data.ahr_inicio);
 	$('input[name="hr_termino"]').val(data.ahr_termino);
-	$('input[name="status"]').val(data.astatus);
 	$('input[name="lat"]').val(data.alatitude);
 	$('input[name="lng"]').val(data.alongitude);
 }
+
+/* Status */ 
+//Select Picker para operacao
+var selectStatus = $('select[name="idstatus"]');
+$.ajax({
+	type: 'POST',
+	url: url+ "/api.php",
+	data: {classe: "status", metodo: "obterTodos", token: token},
+	success: function(result) {	
+		if ( ! result.data ) result.data = [];
+		selectStatus.append( $('<option>', {text: '-- Novo Status --'}) );
+		$.each( result.data, function(index, element) {
+			selectStatus.append( $('<option>', {value: element.idstatus, text: element.status}) );
+		});
+
+		selectStatus.html(selectStatus.find('option').sort(function(x, y) {
+			// to descending order switch "<" for ">"
+			return $(x).text() > $(y).text() ? 1 : -1;
+		}));
+
+		if (data) selectStatus.val(data.aidstatus);
+		else selectStatus.val(null);	
+
+		selectStatus.selectpicker();				
+	}
+});
+
+$('#idstatus').change(function() {
+	if ($(this).val() == '-- Novo Status --') {
+		$('#div-status').html("<input class='form-control' type='text' id='idstatus' name='idstatus' placeholder='Escreva o status da ação' required>");
+		$('#idstatus').change();
+		$('#idstatus').focus();
+	}
+});
 
 /* Operação */ 
 //Select Picker para operacao
@@ -125,34 +158,25 @@ var geocodeReverse = function ( latlng ) {
 setTimeout(function(){ map.invalidateSize() }, 300);
 
 /* Status */
-var sel_status = $('select[name="status"]');
-$.post( url + '/api.php', {classe: "acao", metodo: "obterTodos", token: token},function (result) {
-	sel_status.append( $('<option>', {text: '-- Novo Status --'}) );
+// var sel_status = $('select[name="status"]');
+// $.post( url + '/api.php', {classe: "acao", metodo: "obterTodos", token: token},function (result) {
+// 	sel_status.append( $('<option>', {text: '-- Novo Status --'}) );
 
-	if ( result.error ) result.data = [];
-	$.each( result.data, function(i, field) {
-		sel_status.append( $('<option>', {text: field.status}) );
-	});
+// 	if ( result.error ) result.data = [];
+// 	$.each( result.data, function(i, field) {
+// 		sel_status.append( $('<option>', {text: field.status}) );
+// 	});
 	
-	sel_status.html(sel_status.find('option').sort(function(x, y) {
-		// to descending order switch "<" for ">"
-		return $(x).text() > $(y).text() ? 1 : -1;
-	}));
+// 	sel_status.html(sel_status.find('option').sort(function(x, y) {
+// 		// to descending order switch "<" for ">"
+// 		return $(x).text() > $(y).text() ? 1 : -1;
+// 	}));
 
-	if (data) sel_status.val(data.status);
-	else sel_status.val(null);
+// 	if (data) sel_status.val(data.status);
+// 	else sel_status.val(null);
 	
-	sel_status.selectpicker();
-});
-
-$('#status').change(function() {
-	$('#div-status').html("<input class='form-control' type='text' id='status' name='status' placeholder='Escreva o status da ação' required>");
-		$('#status').change();
-		$('#status').focus();
-	if ($(this).val() == '-- Nova Status --') {
-		
-	}
-});
+// 	sel_status.selectpicker();
+// });
 
 $('form').submit(function(){
 	var formData = $(this).serializeArray();

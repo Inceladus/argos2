@@ -9,7 +9,7 @@ class acao extends database {
 		// 	INNER JOIN operacao o
 		// 	ON a.idoperacao = o.idoperacao";
 		$sql = "SELECT a.idacao AS aidacao, a.nome_acao AS anome_acao, a.dt_inicio AS adt_inicio, a.dt_termino AS adt_termino, a.hr_inicio AS ahr_inicio, a.hr_termino AS ahr_termino, a.latitude AS alatitude, a.longitude AS alongitude, 
-			a.`status` AS astatus, a.idoperacao AS aidoperacao, o.nome_operacao, 
+			a.idstatus AS aidstatus, s.status, a.idoperacao AS aidoperacao, o.nome_operacao, 
 			ai.idacao_indicador AS aiidacao_indicador, ai.idindicador AS aiidindicador, ai.idacao AS aiidacao, 
 			ai.quantidade AS aiquantidade, ainst.idacao_instituicao AS ainstidacao_instituicao, 
 			ainst.idinstituicao AS ainstidinstituicao, ainst.idacao AS ainstidacao, ainst.responsavel AS ainstresponsavel,
@@ -17,6 +17,8 @@ class acao extends database {
 			ao.quantidade AS aoquantidade, ao.observacao AS aoobservacao, ar.idacao_recurso AS aridacao_recurso,
 			ar.idacao AS aridacao, ar.idrecurso AS aridrecurso, ar.quantidade AS arquantidade, 
 			ast.idacao_status AS astidacao_status, ast.idacao AS astidacao, ast.idstatus AS astidstatus FROM acao a 
+			LEFT JOIN status s
+			ON s.idstatus = a.idstatus
 			LEFT JOIN operacao o
 			ON o.idoperacao = a.idoperacao
 			LEFT JOIN acao_indicador ai
@@ -66,7 +68,7 @@ class acao extends database {
 		$this->hr_termino = @ $_REQUEST['hr_termino'];
 		$this->latitude = @ $_REQUEST['lat'];
 		$this->longitude = @ $_REQUEST['lng'];
-		$this->status = @ $_REQUEST['status'];
+		$this->idstatus = @ $_REQUEST['idstatus'];
 		$this->idoperacao = @ $_REQUEST['idoperacao'];
 	
 		if ( $this->idacao ) {

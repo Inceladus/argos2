@@ -3,7 +3,7 @@
 class status extends database {
 
 	public function obterTodos() {
-		$sql = "SELECT idstatus, status FROM status";
+		$sql = "SELECT * FROM status";
 		if ( $rs = parent::fetch_all($sql) ) {
 			foreach ( $rs as $row ) {
 				$col = array();
