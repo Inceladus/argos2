@@ -1,5 +1,5 @@
 <h1>
-<button class="btn btn-primary float-right" id="btn-novo-acao-indicador">Novo</button>
+<button class="btn btn-primary float-right" id="btn-novo-acao-instituicao">Novo</button>
 Cadastrar Instituições da Ação
 </h1>
 
@@ -15,3 +15,8 @@ Cadastrar Instituições da Ação
 <br />
 
 <script src='js/acao-instituicao.js'></script>
+<script>
+	$("#btn-novo-acao-instituicao").click(function(){
+		$('#instituicao').load('partial/acao-instituicao-form.html');
+	});
+</script>
