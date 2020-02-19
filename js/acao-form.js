@@ -17,19 +17,14 @@ $.ajax({
 	url: url+ "/api.php",
 	data: {classe: "status", metodo: "obterTodos", token: token},
 	success: function(result) {	
-		if ( ! result.data ) result.data = [];
 		selectStatus.append( $('<option>', {text: '-- Novo Status --'}) );
+		if ( ! result.data ) result.data = [];
 		$.each( result.data, function(index, element) {
 			selectStatus.append( $('<option>', {value: element.idstatus, text: element.status}) );
 		});
 
-		selectStatus.html(selectStatus.find('option').sort(function(x, y) {
-			// to descending order switch "<" for ">"
-			return $(x).text() > $(y).text() ? 1 : -1;
-		}));
-
 		if (data) selectStatus.val(data.aidstatus);
-		else selectStatus.val(null);	
+		else selectStatus.val(null);
 
 		selectStatus.selectpicker();				
 	}
@@ -156,27 +151,6 @@ var geocodeReverse = function ( latlng ) {
 
 // clicking on nav-tabs
 setTimeout(function(){ map.invalidateSize() }, 300);
-
-/* Status */
-// var sel_status = $('select[name="status"]');
-// $.post( url + '/api.php', {classe: "acao", metodo: "obterTodos", token: token},function (result) {
-// 	sel_status.append( $('<option>', {text: '-- Novo Status --'}) );
-
-// 	if ( result.error ) result.data = [];
-// 	$.each( result.data, function(i, field) {
-// 		sel_status.append( $('<option>', {text: field.status}) );
-// 	});
-	
-// 	sel_status.html(sel_status.find('option').sort(function(x, y) {
-// 		// to descending order switch "<" for ">"
-// 		return $(x).text() > $(y).text() ? 1 : -1;
-// 	}));
-
-// 	if (data) sel_status.val(data.status);
-// 	else sel_status.val(null);
-	
-// 	sel_status.selectpicker();
-// });
 
 $('form').submit(function(){
 	var formData = $(this).serializeArray();
