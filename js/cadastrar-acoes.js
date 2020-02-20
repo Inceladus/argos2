@@ -25,14 +25,6 @@ var datatable = $('#datatable').DataTable( {
 	}
 });
 
-$.ajax({
-	url: url + '/api.php',
-	data: {classe: 'acao', metodo: 'obterTodos', token: token},
-	success: function(result){
-		console.log(result);
-	}
-});
-
 var loadForm = function() {
 	$('.modal-content').load('partial/cadastrar-acoes-form.html', function(response,status) {
 		if ( status == 'success' ) $('.modal').modal('show');

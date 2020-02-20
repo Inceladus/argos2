@@ -3,11 +3,18 @@ $('.modal-title').text('Nova Ação');
 $('#tabs').hide();
 $('#acao-form').load('partial/acao-form.html');
 if ( data ) {
+	//Carregar o Id
 	$('.modal-title').text('Ação #'+data.aidacao);
-	
+	//Mostrar as Tabs
 	$('#tabs').show();
+
+	//Esconder o form da acao
 	$('#acao-form').hide();
+
+	//Mostar o Form da acao
 	$('#acao').load('partial/acao-form.html');
+
+	//Carregar conteudo ao clicar nas tabs
 	$('#acao-tab').click(function(){
 		$('#acao').load('partial/acao-form.html');
 	});

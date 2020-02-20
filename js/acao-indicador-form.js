@@ -1,17 +1,10 @@
-// //Requisitar dados
-// $.ajax({
-// 	url: url + '/api.php',
-// 	data: {classe: 'acao_indicador', metodo: 'obterTodos', token: token},
-// 	success: function(result){
-// 		$('input[name="idacao_indicador"]').val(result.data[0].idacao_indicador);
-// 		$('input[name="idacao"]').val(result.data[0].idacao);
-// 		$('input[name="idindicador"]').val(result.data[0].idindicador);
-// 		$('input[name="quantidade"]').val(result.data[0].quantidade);
-// 		console.log(result.data[0].quantidade);
-// 	}
-// });
-
 //Listar indicadores
+if(data){
+	$('input[name="idacao_indicador"]').val(data.aiidacao_indicador);
+	$('input[name="idacao"]').val(data.aidacao);
+	$('input[name="quantidade"]').val(data.aiquantidade);
+}
+
 //Select Picker para indicador
 var selectindicador = $('select[name="idindicador"]');
 $.ajax({
@@ -29,7 +22,7 @@ $.ajax({
 			return $(x).text() > $(y).text() ? 1 : -1;
 		}));
 
-		if (data) selectindicador.val(data.idindicador);
+		if (data) selectindicador.val(data.aiidindicador);
 		else selectindicador.val(null);	
 
 		selectindicador.selectpicker();				
@@ -38,6 +31,7 @@ $.ajax({
 
 $('form').submit(function(){
 	var formData = $(this).serializeArray();
+	console.log(formData);
 	formData.push({name: 'classe', value: 'acao_indicador'});
 	formData.push({name: 'metodo', value: 'salvar'});
 	formData.push({name: 'token', value: token});
@@ -50,8 +44,8 @@ $('form').submit(function(){
 				alert(result.error);
 			} else {
 				console.log(result);
-				$('input[name="idindicador"]').val(result.idindicador);
-				alert('Grupo de Indicador ID '+result.idindicador+' gravado!');
+				$('input[name="idacao_indicador"]').val(result.idacao_indicador);
+				alert('Indicador da Ação ID '+result.idacao_indicador+' gravado!');
 				datatable.ajax.reload(null, false);
 			}
 		}

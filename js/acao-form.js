@@ -11,30 +11,30 @@ if (data) {
 
 /* Status */ 
 //Select Picker para operacao
-var selectStatus = $('select[name="idstatus"]');
+var selectStatus = $('select[name="status"]');
 $.ajax({
 	type: 'POST',
 	url: url+ "/api.php",
-	data: {classe: "status", metodo: "obterTodos", token: token},
+	data: {classe: "acao", metodo: "obterStatus", token: token},
 	success: function(result) {	
 		selectStatus.append( $('<option>', {text: '-- Novo Status --'}) );
 		if ( ! result.data ) result.data = [];
 		$.each( result.data, function(index, element) {
-			selectStatus.append( $('<option>', {value: element.idstatus, text: element.status}) );
+			selectStatus.append( $('<option>', {text: element.status}) );
 		});
 
-		if (data) selectStatus.val(data.aidstatus);
+		if (data) selectStatus.val(data.status);
 		else selectStatus.val(null);
 
-		selectStatus.selectpicker();				
+		selectStatus.selectpicker();	
 	}
 });
 
-$('#idstatus').change(function() {
+$('select[name="status"]').change(function() {
 	if ($(this).val() == '-- Novo Status --') {
-		$('#div-status').html("<input class='form-control' type='text' id='idstatus' name='idstatus' placeholder='Escreva o status da ação' required>");
-		$('#idstatus').change();
-		$('#idstatus').focus();
+		$('#div-status').html("<input class='form-control' type='text' id='status' name='status' placeholder='Escreva o status da ação' required>");
+		$('status').change();
+		$('status').focus();
 	}
 });
 
@@ -165,7 +165,6 @@ $('form').submit(function(){
 			if ( result.error ) {
 				alert(result.error);
 			} else {
-				console.log(result);
 				$('input[name="idacao"]').val(result.idoacao);
 				alert('Ação ID '+result.idacao+' gravado!');
 				datatable.ajax.reload(null, false);
@@ -173,4 +172,4 @@ $('form').submit(function(){
 		}
 	});
 	return false;
-});	
+});

@@ -1,6 +1,6 @@
 $('title').text('Cadastro de Ações da Operação');
 
-var datatable = $('#datatable2').DataTable( {
+var datatable_indicador = $('#datatable-acao-indicador').DataTable( {
 	"ajax": {
 		"url": url + '/api.php',
 		"deferRender": true,
@@ -29,12 +29,14 @@ var loadFormAcaoIndicador = function() {
 	});
 }
 
-$('#datatable2 tbody').on('click', 'tr', function () {
-	data = datatable.row( this ).data();
+$('#datatable-acao-indicador tbody').on('click', 'tr', function () {
+	data = datatable_indicador.row( this ).data();
 	loadFormAcaoIndicador();
 });
 
 $('#btn-novo-acao-indicador').click(function() {
-	data = null;
+	data.aiidacao_indicador = null;
+	data.aiidindicador = null;
+	data.aiquantidade = null;
 	loadFormAcaoIndicador();
 });
