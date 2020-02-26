@@ -1,4 +1,8 @@
-//Listar instituicaoes
+if ( data ) {
+	$('input[name="idacao"]').val(data.aidacao);
+	if (data.ainstresponsavel=='S') $('#responsavel').prop('checked',true);
+}
+
 //Select Picker para instituicao
 var selectInstituicao = $('select[name="idinstituicao"]');
 $.ajax({
@@ -19,7 +23,7 @@ $.ajax({
 		if (data) selectInstituicao.val(data.idinstituicao);
 		else selectInstituicao.val(null);
 
-		selectInstituicao.selectpicker();				
+		selectInstituicao.selectpicker();	 			
 	}
 });
 
@@ -37,8 +41,8 @@ $('form').submit(function(){
 				alert(result.error);
 			} else {
 				console.log(result);
-				$('input[name="idinstituicao"]').val(result.idinstituicao);
-				alert('Grupo de instituicao ID '+result.idinstituicao+' gravado!');
+				$('input[name="idacao_instituicao"]').val(result.idacao_instituicao);
+				alert('Grupo de Instituição da Ação ID '+result.idacao_instituicao+' gravado!');
 				datatable.ajax.reload(null, false);
 			}
 		}

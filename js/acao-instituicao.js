@@ -1,21 +1,21 @@
 $('title').text('Cadastro de Ações da Operação');
 
-var datatable = $('#datatable3').DataTable( {
+var datatable_instituicao = $('#datatable-acao-instituicao').DataTable( {
 	"ajax": {
 		"url": url + '/api.php',
 		"deferRender": true,
 		"dataSrc": function (json) { if (json.data) return json.data; else return false; },
 		"type": "POST",
 		"data": function (d) {
-			d.classe = 'acao_instituicao';
+			d.classe = 'acao';
 			d.metodo = 'obterTodos';
 			d.token = token;
 		}
 	},
 	"columns": [
-		{ "data": "idacao_instituicao", "className": "details-control" },
-		{ "data": "idinstituicao", "className": "details-control" },
-		{ "data": "responsavel", "className": "details-control" }
+		{ "data": "ainstidacao_instituicao", "className": "details-control" },
+		{ "data": "ainstidinstituicao", "className": "details-control" },
+		{ "data": "ainstresponsavel", "className": "details-control" }
 	],
 	"responsive": true,		
 	"language": {
@@ -23,18 +23,20 @@ var datatable = $('#datatable3').DataTable( {
 	}
 });
 
-var loadFormAcaoIndicador = function() {
-	$('#indicador').load('partial/acao-indicador-form.html', function(response,status) {
+var loadFormAcaoInstituicao = function() {
+	$('#instituicao').load('partial/acao-instituicao-form.html', function(response,status) {
 		if ( status == 'success' ) $('.modal').modal('show');
 	});
 }
 
-$('#datatable2 tbody').on('click', 'tr', function () {
-	data = datatable.row( this ).data();
-	loadFormAcaoIndicador();
+$('#datatable-acao-instituicao tbody').on('click', 'tr', function () {
+	data = datatable_instituicao.row( this ).data();
+	loadFormAcaoInstituicao();
 });
 
-$('#btn-novo-acao-indicador').click(function() {
-	data = null;
-	loadFormAcaoIndicador();
+$('#btn-novo-acao-instituicao').click(function() {
+	data.aiidacao_instituicao = null;
+	data.aiidinstituicao = null;
+	data.aiquantidade = null;
+	loadFormAcaoInstituicao();
 });

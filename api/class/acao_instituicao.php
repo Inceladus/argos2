@@ -1,6 +1,6 @@
 <?php
 
-class acao_indicador extends database {
+class acao_instituicao extends database {
 	
 	public function obterTodos() {
 		$sql = "SELECT idacao_indicador, a_i.idindicador, i.indicador, a.nome_acao ,a_i.idacao, quantidade
@@ -27,7 +27,8 @@ class acao_indicador extends database {
 		$this->idacao_instituicao = @ $_REQUEST['idacao_instituicao'];
 		$this->idinstituicao = @ $_REQUEST['idinstituicao'];
 		$this->idacao = @ $_REQUEST['idacao'];
-		$this->responsavel = $_user->idusuario;
+		if ( @ $_REQUEST['responsavel'] ) $this->responsavel = 'S';
+		else $this->responsavel = 'N';
 		if ( $this->idacao_instituicao ) {
 			$this->update();
 			$this->saveLog('alterou acao_instituicao ID '.$this->idacao_instituicao, $_user->idusuario);

@@ -1,3 +1,6 @@
+<h1>
+	Cadastrar Instituição da Ação
+</h1> 
 <form role="form" class="container">
 	<div class="form-group">
         <input type='hidden' name='idacao_instituicao'>
@@ -7,7 +10,15 @@
 			<div id='div-instituicao'>
 				<select class='form-control selectpicker' id='idinstituicao' name='idinstituicao' data-live-search='true' required></select>
 			</div>
-		<input type='hidden' name='idinstituicao'>
+    	</div>
+    	<div class="form-check">
+		  <input class="form-check-input" type="checkbox" id="responsvel" name='responsvel'>
+		  <label class="form-check-label" for="responsvel">Responsvel</label>
+		</div>
     </div>
+    <hr>
+	<div class="form-group">
+		<button class='btn btn-success' type='submit'>Salvar</button>
+	</div>
 </form>
 <script src='js/acao-instituicao-form.js'></script>
