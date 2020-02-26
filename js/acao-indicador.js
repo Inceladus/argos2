@@ -7,14 +7,15 @@ var datatable_indicador = $('#datatable-acao-indicador').DataTable( {
 		"dataSrc": function (json) { if (json.data) return json.data; else return false; },
 		"type": "POST",
 		"data": function (d) {
-			d.classe = 'acao';
+			d.classe = 'acao_indicador';
 			d.metodo = 'obterTodos';
 			d.token = token;
+			d.idacao = data.aidacao;
 		}
 	},
 	"columns": [
 		{ "data": "aiidacao_indicador", "className": "details-control" },
-		{ "data": "aiidacao", "className": "details-control" },
+		{ "data": "indicador", "className": "details-control" },
 		{ "data": "aiquantidade", "className": "details-control" }
 	],
 	"responsive": true,		

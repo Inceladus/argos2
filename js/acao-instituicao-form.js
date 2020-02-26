@@ -9,7 +9,7 @@ $.ajax({
 	type: 'POST',
 	url: url+ "/api.php",
 	data: {classe: "instituicao", metodo: "obterTodos", token: token},
-	success: function(result) {	
+	success: function(result) {
 		if ( ! result.data ) result.data = [];
 		$.each( result.data, function(index, element) {
 			selectInstituicao.append( $('<option>', {value: element.idinstituicao, text: element.instituicao}) );
@@ -20,7 +20,7 @@ $.ajax({
 			return $(x).text() > $(y).text() ? 1 : -1;
 		}));
 
-		if (data) selectInstituicao.val(data.idinstituicao);
+		if (data) selectInstituicao.val(data.ainstidinstituicao);
 		else selectInstituicao.val(null);
 
 		selectInstituicao.selectpicker();	 			
@@ -36,7 +36,7 @@ $('form').submit(function(){
 		type: 'POST',
 		url: url+'/api.php',
 		data: formData,
-		success: function(result) {	
+		success: function(result) {
 			if ( result.error ) {
 				alert(result.error);
 			} else {
