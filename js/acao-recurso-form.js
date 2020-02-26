@@ -41,9 +41,9 @@ $('form').submit(function(){
 			if ( result.error ) {
 				alert(result.error);
 			} else {
-				$('input[name="idacao_recurso"]').val(result.idacao_recurso);
 				alert('Recurso da Ação ID '+result.idacao_recurso+' gravada!');
-				datatable.ajax.reload(null, false);
+				$('#recurso').load('partial/acao-recurso.html');
+				datatable_recurso.ajax.reload(null, false);
 			}
 		}
 	});

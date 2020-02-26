@@ -43,10 +43,9 @@ $('form').submit(function(){
 			if ( result.error ) {
 				alert(result.error);
 			} else {
-				console.log(result);
-				$('input[name="idacao_indicador"]').val(result.idacao_indicador);
 				alert('Indicador da Ação ID '+result.idacao_indicador+' gravado!');
-				datatable.ajax.reload(null, false);
+				$('#indicador').load('partial/acao-indicador.html');
+				datatable_indicador.ajax.reload(null, false);
 			}
 		}
 	});

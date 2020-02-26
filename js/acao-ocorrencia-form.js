@@ -43,9 +43,9 @@ $('form').submit(function(){
 				alert(result.error);
 			} else {
 				console.log(result);
-				$('input[name="idacao_ocorrencia"]').val(result.idacao_ocorrencia);
 				alert('Ocorrência da Ação ID '+result.idacao_ocorrencia+' gravada!');
-				datatable.ajax.reload(null, false);
+				$('#ocorrencia').load('partial/acao-ocorrencia.html');
+				datatable_ocorrencia.ajax.reload(null, false);
 			}
 		}
 	});

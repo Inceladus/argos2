@@ -41,9 +41,9 @@ $('form').submit(function(){
 			if ( result.error ) {
 				alert(result.error);
 			} else {
-				$('input[name="idacao_instituicao"]').val(result.idacao_instituicao);
 				alert('Grupo de Instituição da Ação ID '+result.idacao_instituicao+' gravado!');
-				datatable.ajax.reload(null, false);
+				$('#instituicao').load('partial/acao-instituicao.html');
+				datatable_instituicao.ajax.reload(null, false);
 			}
 		}
 	});
