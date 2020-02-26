@@ -1,3 +1,9 @@
+if ( data ) {
+	$('input[name="idacao"]').val(data.aidacao);
+	$('input[name="idacao_recurso"]').val(data.idacao_recurso);
+	$('input[name="quantidade"]').val(data.quantidade);
+}
+
 //Select Picker para recurso
 var selectrecurso = $('select[name="idrecurso"]');
 $.ajax({
@@ -20,4 +26,26 @@ $.ajax({
 
 		selectrecurso.selectpicker();				
 	}
+});
+
+$('form').submit(function(){
+	var formData = $(this).serializeArray();
+	formData.push({name: 'classe', value: 'acao_recurso'});
+	formData.push({name: 'metodo', value: 'salvar'});
+	formData.push({name: 'token', value: token});
+	$.ajax({
+		type: 'POST',
+		url: url+'/api.php',
+		data: formData,
+		success: function(result) {	
+			if ( result.error ) {
+				alert(result.error);
+			} else {
+				$('input[name="idacao_recurso"]').val(result.idacao_recurso);
+				alert('Recurso da Ação ID '+result.idacao_recurso+' gravada!');
+				datatable.ajax.reload(null, false);
+			}
+		}
+	});
+	return false;
 });
