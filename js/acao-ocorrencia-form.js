@@ -1,4 +1,10 @@
-//Listar ocorrenciaes
+if ( data ) {
+	$('input[name="idacao"]').val(data.aidacao);
+	$('input[name="idacao_ocorrencia"]').val(data.idacao_ocorrencia);
+	$('input[name="quantidade"]').val(data.quantidade);
+	$('textarea[name="observacao"]').val(data.observacao);
+}
+//Listar ocorrencia 
 //Select Picker para ocorrencia
 var selectocorrencia = $('select[name="idocorrencia"]');
 $.ajax({
@@ -37,8 +43,8 @@ $('form').submit(function(){
 				alert(result.error);
 			} else {
 				console.log(result);
-				$('input[name="idocorrencia"]').val(result.idocorrencia);
-				alert('Grupo de ocorrencia ID '+result.idocorrencia+' gravado!');
+				$('input[name="idacao_ocorrencia"]').val(result.idacao_ocorrencia);
+				alert('Ocorrência da Ação ID '+result.idacao_ocorrencia+' gravada!');
 				datatable.ajax.reload(null, false);
 			}
 		}

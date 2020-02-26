@@ -25,6 +25,7 @@ if ( data ) {
 	$('#instituicao-tab').click(function(){
 		$('#instituicao').load('partial/acao-instituicao.html');
 	});
+	
 	$('#ocorrencia-tab').click(function(){
 		$('#ocorrencia').load('partial/acao-ocorrencia.html');
 	});

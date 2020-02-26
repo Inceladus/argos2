@@ -41,6 +41,15 @@ if ( sessionStorage.getItem('token') ) {
 		}
 	}); 
 	
+	$.fn.dataTable.ext.errMode = function ( settings, helpPage, message ) { 
+		var error = message.split(" - ", 2);
+		console.log ( error[1] );
+		if ( error[1] == 'Token expirado') {
+			sessionStorage.removeItem('token');
+			location.reload(true);			
+		}
+	}
+	
 	$('.navbar-nav').on('click', 'li', function() {
 		$('.navbar-nav li').removeClass("active");
 		$(this).addClass("active");
