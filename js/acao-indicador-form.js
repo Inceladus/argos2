@@ -1,8 +1,8 @@
 //Listar indicadores
 if(data){
-	$('input[name="idacao_indicador"]').val(data.aiidacao_indicador);
+	$('input[name="idacao_indicador"]').val(data.idacao_indicador);
 	$('input[name="idacao"]').val(data.aidacao);
-	$('input[name="quantidade"]').val(data.aiquantidade);
+	$('input[name="quantidade"]').val(data.quantidade);
 }
 
 //Select Picker para indicador
@@ -22,7 +22,7 @@ $.ajax({
 			return $(x).text() > $(y).text() ? 1 : -1;
 		}));
 
-		if (data) selectindicador.val(data.aiidindicador);
+		if (data) selectindicador.val(data.idindicador);
 		else selectindicador.val(null);	
 
 		selectindicador.selectpicker();				

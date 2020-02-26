@@ -7,15 +7,16 @@ var datatable_instituicao = $('#datatable-acao-instituicao').DataTable( {
 		"dataSrc": function (json) { if (json.data) return json.data; else return false; },
 		"type": "POST",
 		"data": function (d) {
-			d.classe = 'acao';
-			d.metodo = 'obterTodos';
+			d.classe = 'acao_instituicao';
+			d.metodo = 'obterTodos'; 
 			d.token = token;
+			d.idacao = data.aidacao;
 		}
 	},
 	"columns": [
-		{ "data": "ainstidacao_instituicao", "className": "details-control" },
-		{ "data": "ainstidinstituicao", "className": "details-control" },
-		{ "data": "ainstresponsavel", "className": "details-control" }
+		{ "data": "idacao_instituicao", "className": "details-control" },
+		{ "data": "instituicao", "className": "details-control" },
+		{ "data": "responsavel", "className": "details-control" }
 	],
 	"responsive": true,		
 	"language": {
@@ -35,8 +36,8 @@ $('#datatable-acao-instituicao tbody').on('click', 'tr', function () {
 });
 
 $('#btn-novo-acao-instituicao').click(function() {
-	data.aiidacao_instituicao = null;
-	data.aiidinstituicao = null;
-	data.aiquantidade = null;
+	data.idacao_instituicao = null;
+	data.idinstituicao = null;
+	data.quantidade = null;
 	loadFormAcaoInstituicao();
 });

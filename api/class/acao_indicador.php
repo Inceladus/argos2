@@ -4,7 +4,7 @@ class acao_indicador extends database {
 
 	public function obterTodos(){
 		//Acao Indicador
-		$sql = "SELECT a.idacao AS aidacao, a.nome_acao AS anome_acao, a.dt_inicio AS adt_inicio, a.dt_termino AS adt_termino, a.hr_inicio AS ahr_inicio, a.hr_termino AS ahr_termino, a.latitude AS alatitude, a.longitude AS alongitude, a.status AS status, a.idoperacao AS aidoperacao, o.nome_operacao, ai.idacao_indicador AS aiidacao_indicador, ai.idindicador AS aiidindicador, i.indicador, ai.idacao AS aiidacao, ai.quantidade AS aiquantidade FROM acao a
+		$sql = "SELECT a.idacao AS aidacao, a.nome_acao AS anome_acao, a.dt_inicio AS adt_inicio, a.dt_termino AS adt_termino, a.hr_inicio AS ahr_inicio, a.hr_termino AS ahr_termino, a.latitude AS alatitude, a.longitude AS alongitude, a.status AS status, a.idoperacao AS aidoperacao, o.nome_operacao, ai.idacao_indicador, ai.idindicador, i.indicador, ai.idacao, ai.quantidade FROM acao a
 			INNER JOIN operacao o
 			ON o.idoperacao = a.idoperacao
 			INNER JOIN acao_indicador ai

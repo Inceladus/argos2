@@ -1,6 +1,7 @@
 if ( data ) {
 	$('input[name="idacao"]').val(data.aidacao);
-	if (data.ainstresponsavel=='S') $('#responsavel').prop('checked',true);
+	$('input[name="idacao_instituicao"]').val(data.idacao_instituicao);
+	if (data.responsavel=='S') $('#responsavel').prop('checked',true);
 }
 
 //Select Picker para instituicao
@@ -20,7 +21,7 @@ $.ajax({
 			return $(x).text() > $(y).text() ? 1 : -1;
 		}));
 
-		if (data) selectInstituicao.val(data.ainstidinstituicao);
+		if (data) selectInstituicao.val(data.idinstituicao);
 		else selectInstituicao.val(null);
 
 		selectInstituicao.selectpicker();	 			

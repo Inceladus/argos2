@@ -14,9 +14,9 @@ var datatable_indicador = $('#datatable-acao-indicador').DataTable( {
 		}
 	},
 	"columns": [
-		{ "data": "aiidacao_indicador", "className": "details-control" },
+		{ "data": "idacao_indicador", "className": "details-control" },
 		{ "data": "indicador", "className": "details-control" },
-		{ "data": "aiquantidade", "className": "details-control" }
+		{ "data": "quantidade", "className": "details-control" }
 	],
 	"responsive": true,		
 	"language": {
@@ -36,8 +36,8 @@ $('#datatable-acao-indicador tbody').on('click', 'tr', function () {
 });
 
 $('#btn-novo-acao-indicador').click(function() {
-	data.aiidacao_indicador = null;
-	data.aiidindicador = null;
-	data.aiquantidade = null;
+	data.idacao_indicador = null;
+	data.idindicador = null;
+	data.quantidade = null;
 	loadFormAcaoIndicador();
 });
