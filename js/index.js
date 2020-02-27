@@ -12,7 +12,7 @@ if ( sessionStorage.getItem('token') ) {
 	var permissions = user.permissao.split(',');
 	
 	var menu = $.ajax({
-		url: 'json/menu.json', 
+		url: 'json/menu.json',  
 		success: function( menu ) {
 			var liMenu = '';
 			$.each(menu.items, function(i, item) {
@@ -36,6 +36,7 @@ if ( sessionStorage.getItem('token') ) {
 			$('.navbar-brand').html(menu.title);
 			$('.navbar-nav').html(liMenu);
 			$('#user').text('Olá '+ user.nome +'!');
+			//$('#user').html('<li class="nav-link dropdown"><a class="nav-link dropdown-toggle text-light" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Olá '+ user.nome +'</a><ul class="dropdown-menu"><li id="mudasenha"><a class="dropdown-item" href="#mudasenha">Mudar senha</a></li><li id="out"><a class="dropdown-item" href="#out">Sair</a></li></ul></li>');
 			
 			return menu;
 		}
