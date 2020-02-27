@@ -26,17 +26,18 @@ CREATE TABLE IF NOT EXISTS `acao` (
   `hr_termino` time DEFAULT NULL,
   `latitude` decimal(10,8) NOT NULL DEFAULT 0.00000000,
   `longitude` decimal(11,8) NOT NULL DEFAULT 0.00000000,
-  `status` varchar(30) DEFAULT NULL,
+  `status` varchar(50) NOT NULL,
   `idoperacao` int(11) NOT NULL,
   PRIMARY KEY (`idacao`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela argosbd.acao: ~3 rows (aproximadamente)
+-- Copiando dados para a tabela argosbd.acao: ~4 rows (aproximadamente)
 /*!40000 ALTER TABLE `acao` DISABLE KEYS */;
 INSERT INTO `acao` (`idacao`, `nome_acao`, `dt_inicio`, `dt_termino`, `hr_inicio`, `hr_termino`, `latitude`, `longitude`, `status`, `idoperacao`) VALUES
-	(1, 'Ação 1', '2020-02-12', '2020-02-12', '01:00:00', '20:00:00', -1.40662350, -48.46104675, 'Status 2', 1),
-	(2, 'Ação 2', '2020-02-12', '2020-02-12', '01:00:00', '20:00:00', -1.40662350, -48.46104675, 'Status 3', 2),
-	(3, 'Ação 3', '2020-02-12', '2020-02-12', '01:00:00', '20:00:00', -1.40662350, -48.46104675, 'Status 1', 2);
+	(1, 'Ação 1', '2020-02-12', '2020-02-12', '01:00:00', '20:00:00', -1.40662350, -48.46104675, 'Status 1', 1),
+	(2, 'Ação 2', '2020-02-12', '2020-02-12', '01:00:00', '20:00:00', -1.40662350, -48.46104675, 'Status 2', 2),
+	(3, 'Ação 3', '2020-02-12', '2020-02-12', '01:00:00', '20:00:00', -1.40662350, -48.46104675, 'Status 3', 2),
+	(4, 'Ação 4', '2020-02-20', '2020-02-20', '02:00:00', '03:00:00', -1.42011900, -48.45377025, 'Status 4', 2);
 /*!40000 ALTER TABLE `acao` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela argosbd.acao_indicador
@@ -44,14 +45,18 @@ CREATE TABLE IF NOT EXISTS `acao_indicador` (
   `idacao_indicador` int(11) NOT NULL AUTO_INCREMENT,
   `idindicador` int(11) NOT NULL,
   `idacao` int(11) NOT NULL,
-  `quantidade` int(11) DEFAULT NULL,
+  `quantidade` int(11) NOT NULL,
   PRIMARY KEY (`idacao_indicador`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela argosbd.acao_indicador: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela argosbd.acao_indicador: ~5 rows (aproximadamente)
 /*!40000 ALTER TABLE `acao_indicador` DISABLE KEYS */;
 INSERT INTO `acao_indicador` (`idacao_indicador`, `idindicador`, `idacao`, `quantidade`) VALUES
-	(1, 1, 1, 1);
+	(1, 2, 1, 10),
+	(3, 3, 2, 3),
+	(4, 2, 1, 5),
+	(5, 3, 1, 30),
+	(6, 4, 1, 40);
 /*!40000 ALTER TABLE `acao_indicador` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela argosbd.acao_instituicao
@@ -59,12 +64,16 @@ CREATE TABLE IF NOT EXISTS `acao_instituicao` (
   `idacao_instituicao` int(11) NOT NULL AUTO_INCREMENT,
   `idinstituicao` int(11) NOT NULL,
   `idacao` int(11) NOT NULL,
-  `responsavel` tinyint(4) DEFAULT NULL,
+  `responsavel` char(1) NOT NULL DEFAULT '',
   PRIMARY KEY (`idacao_instituicao`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela argosbd.acao_instituicao: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela argosbd.acao_instituicao: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `acao_instituicao` DISABLE KEYS */;
+INSERT INTO `acao_instituicao` (`idacao_instituicao`, `idinstituicao`, `idacao`, `responsavel`) VALUES
+	(1, 3, 1, 'N'),
+	(2, 1, 1, 'S'),
+	(3, 3, 1, 'N');
 /*!40000 ALTER TABLE `acao_instituicao` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela argosbd.acao_ocorrencia
@@ -72,13 +81,18 @@ CREATE TABLE IF NOT EXISTS `acao_ocorrencia` (
   `idacao_ocorrencia` int(11) NOT NULL AUTO_INCREMENT,
   `idacao` int(11) NOT NULL,
   `idocorrencia` int(11) NOT NULL,
-  `quantidade` int(11) DEFAULT NULL,
-  `observacao` text DEFAULT NULL,
+  `quantidade` int(11) NOT NULL,
+  `observacao` text NOT NULL,
   PRIMARY KEY (`idacao_ocorrencia`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela argosbd.acao_ocorrencia: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela argosbd.acao_ocorrencia: ~4 rows (aproximadamente)
 /*!40000 ALTER TABLE `acao_ocorrencia` DISABLE KEYS */;
+INSERT INTO `acao_ocorrencia` (`idacao_ocorrencia`, `idacao`, `idocorrencia`, `quantidade`, `observacao`) VALUES
+	(1, 1, 1, 3, '4'),
+	(2, 1, 1, 10, 'Obs 1'),
+	(3, 1, 1, 30, 'Obs 3'),
+	(4, 1, 1, 40, 'Obs 4');
 /*!40000 ALTER TABLE `acao_ocorrencia` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela argosbd.acao_recurso
@@ -88,10 +102,14 @@ CREATE TABLE IF NOT EXISTS `acao_recurso` (
   `idrecurso` int(11) NOT NULL,
   `quantidade` int(11) NOT NULL,
   PRIMARY KEY (`idacao_recurso`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela argosbd.acao_recurso: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela argosbd.acao_recurso: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `acao_recurso` DISABLE KEYS */;
+INSERT INTO `acao_recurso` (`idacao_recurso`, `idacao`, `idrecurso`, `quantidade`) VALUES
+	(1, 1, 1, 10),
+	(2, 1, 2, 20),
+	(3, 1, 2, 30);
 /*!40000 ALTER TABLE `acao_recurso` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela argosbd.acao_status
@@ -100,7 +118,7 @@ CREATE TABLE IF NOT EXISTS `acao_status` (
   `idacao` int(11) NOT NULL,
   `idstatus` int(11) NOT NULL,
   PRIMARY KEY (`idacao_status`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- Copiando dados para a tabela argosbd.acao_status: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `acao_status` DISABLE KEYS */;
@@ -224,17 +242,6 @@ INSERT INTO `recurso` (`idrecurso`, `recurso`, `dt_update`) VALUES
 	(2, 'Recurso 2', '2020-02-07 13:16:43');
 /*!40000 ALTER TABLE `recurso` ENABLE KEYS */;
 
--- Copiando estrutura para tabela argosbd.status
-CREATE TABLE IF NOT EXISTS `status` (
-  `idstatus` int(11) NOT NULL AUTO_INCREMENT,
-  `status` varchar(45) NOT NULL,
-  PRIMARY KEY (`idstatus`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- Copiando dados para a tabela argosbd.status: ~0 rows (aproximadamente)
-/*!40000 ALTER TABLE `status` DISABLE KEYS */;
-/*!40000 ALTER TABLE `status` ENABLE KEYS */;
-
 -- Copiando estrutura para tabela argosbd.territorio
 CREATE TABLE IF NOT EXISTS `territorio` (
   `idterritorio` int(11) NOT NULL AUTO_INCREMENT,
@@ -265,9 +272,9 @@ CREATE TABLE IF NOT EXISTS `transacao` (
   `idusuario` int(11) NOT NULL,
   `dt_transacao` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`idtransacao`)
-) ENGINE=InnoDB AUTO_INCREMENT=156 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=229 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela argosbd.transacao: ~130 rows (aproximadamente)
+-- Copiando dados para a tabela argosbd.transacao: ~228 rows (aproximadamente)
 /*!40000 ALTER TABLE `transacao` DISABLE KEYS */;
 INSERT INTO `transacao` (`idtransacao`, `transacao`, `idusuario`, `dt_transacao`) VALUES
 	(1, 'Entrou', 1, '2020-01-20 11:19:42'),
@@ -424,7 +431,80 @@ INSERT INTO `transacao` (`idtransacao`, `transacao`, `idusuario`, `dt_transacao`
 	(152, 'Entrou', 1, '2020-02-14 10:41:41'),
 	(153, 'Entrou', 1, '2020-02-14 11:47:02'),
 	(154, 'Entrou', 1, '2020-02-14 12:54:31'),
-	(155, 'Entrou', 1, '2020-02-14 13:56:30');
+	(155, 'Entrou', 1, '2020-02-14 13:56:30'),
+	(156, 'Entrou', 1, '2020-02-17 10:56:39'),
+	(157, 'Entrou', 1, '2020-02-17 12:06:26'),
+	(158, 'Entrou', 1, '2020-02-17 13:41:19'),
+	(159, 'Entrou', 1, '2020-02-17 14:42:50'),
+	(160, 'Entrou', 1, '2020-02-17 15:57:39'),
+	(161, 'Entrou', 1, '2020-02-17 22:07:13'),
+	(162, 'Entrou', 1, '2020-02-17 22:11:04'),
+	(163, 'Entrou', 1, '2020-02-17 22:21:29'),
+	(164, 'Entrou', 1, '2020-02-17 22:22:55'),
+	(165, 'Entrou', 1, '2020-02-17 22:43:08'),
+	(166, 'Entrou', 1, '2020-02-17 22:46:46'),
+	(167, 'Entrou', 1, '2020-02-17 22:47:46'),
+	(168, 'Entrou', 1, '2020-02-17 22:52:21'),
+	(169, 'Entrou', 1, '2020-02-17 23:26:10'),
+	(170, 'Entrou', 1, '2020-02-17 23:35:09'),
+	(171, 'Entrou', 1, '2020-02-17 23:35:13'),
+	(172, 'Entrou', 1, '2020-02-18 09:13:12'),
+	(173, 'Entrou', 1, '2020-02-18 09:17:13'),
+	(174, 'Entrou', 1, '2020-02-18 09:22:18'),
+	(175, 'Entrou', 1, '2020-02-18 09:23:39'),
+	(176, 'Entrou', 1, '2020-02-19 10:58:07'),
+	(177, 'Entrou', 1, '2020-02-19 11:17:00'),
+	(178, 'Entrou', 1, '2020-02-19 13:26:53'),
+	(179, 'Entrou', 1, '2020-02-19 15:00:23'),
+	(180, 'Entrou', 1, '2020-02-19 16:02:43'),
+	(181, 'Entrou', 1, '2020-02-19 16:53:15'),
+	(182, 'Entrou', 1, '2020-02-20 10:10:18'),
+	(183, 'inserir acao ID 4', 1, '2020-02-20 10:34:13'),
+	(184, 'Entrou', 1, '2020-02-20 10:35:20'),
+	(185, 'alterou acao ID 1', 1, '2020-02-20 10:43:16'),
+	(186, 'alterou acao ID 1', 1, '2020-02-20 10:43:16'),
+	(187, 'Entrou', 1, '2020-02-20 14:28:29'),
+	(188, 'alterou acao ID 1', 1, '2020-02-20 14:28:42'),
+	(189, 'alterou acao ID 1', 1, '2020-02-20 14:28:42'),
+	(190, 'Entrou', 1, '2020-02-20 15:29:53'),
+	(191, 'inserir acao_indicador ID 1', 1, '2020-02-20 15:58:01'),
+	(192, 'inserir acao_indicador ID 2', 1, '2020-02-20 16:00:18'),
+	(193, 'inserir acao_indicador ID 3', 1, '2020-02-20 16:04:51'),
+	(194, 'Entrou', 1, '2020-02-26 12:47:35'),
+	(195, 'alterou acao_indicador ID 1', 1, '2020-02-26 12:49:19'),
+	(196, 'inserir acao_instituicao ID ', 1, '2020-02-26 13:41:10'),
+	(197, 'inserir acao_instituicao ID ', 1, '2020-02-26 13:42:53'),
+	(198, 'inserir acao_instituicao ID ', 1, '2020-02-26 13:46:39'),
+	(199, 'Entrou', 1, '2020-02-26 14:12:15'),
+	(200, 'inserir acao_instituicao ID ', 1, '2020-02-26 14:16:31'),
+	(201, 'Entrou', 1, '2020-02-26 15:13:36'),
+	(202, 'alterou acao ID 1', 1, '2020-02-26 15:31:14'),
+	(203, 'inserir acao_indicador ID 4', 1, '2020-02-26 15:31:26'),
+	(204, 'alterou acao_indicador ID 4', 1, '2020-02-26 15:47:00'),
+	(205, 'alterou acao_indicador ID 4', 1, '2020-02-26 15:47:08'),
+	(206, 'alterou acao_instituicao ID 5', 1, '2020-02-26 15:54:41'),
+	(207, 'alterou acao_instituicao ID 2', 1, '2020-02-26 15:54:48'),
+	(208, 'alterou acao_instituicao ID 2', 1, '2020-02-26 15:54:52'),
+	(209, 'inserir acao_instituicao ID ', 1, '2020-02-26 15:54:59'),
+	(210, 'alterou acao_instituicao ID 6', 1, '2020-02-26 15:56:06'),
+	(211, 'inserir acao_instituicao ID ', 1, '2020-02-26 15:56:17'),
+	(212, 'alterou acao_instituicao ID 7', 1, '2020-02-26 15:56:29'),
+	(213, 'inserir acao_instituicao ID ', 1, '2020-02-26 15:56:37'),
+	(214, 'inserir acao_instituicao ID ', 1, '2020-02-26 15:57:33'),
+	(215, 'inserir acao_instituicao ID 2', 1, '2020-02-26 16:00:53'),
+	(216, 'alterou acao_instituicao ID 1', 1, '2020-02-26 16:02:18'),
+	(217, 'Entrou', 1, '2020-02-26 16:17:14'),
+	(218, 'Entrou', 1, '2020-02-26 16:39:27'),
+	(219, 'Entrou', 1, '2020-02-26 16:40:58'),
+	(220, 'inserir acao_ocorrencia ID 2', 1, '2020-02-26 16:54:09'),
+	(221, 'inserir acao_ocorrencia ID 3', 1, '2020-02-26 17:08:11'),
+	(222, 'inserir acao_recurso ID 2', 1, '2020-02-26 17:14:02'),
+	(223, 'inserir acao_indicador ID 5', 1, '2020-02-26 17:24:43'),
+	(224, 'inserir acao_indicador ID 6', 1, '2020-02-26 17:26:47'),
+	(225, 'inserir acao_instituicao ID 3', 1, '2020-02-26 17:27:39'),
+	(226, 'alterou acao_instituicao ID 3', 1, '2020-02-26 17:27:46'),
+	(227, 'inserir acao_ocorrencia ID 4', 1, '2020-02-26 17:28:37'),
+	(228, 'inserir acao_recurso ID 3', 1, '2020-02-26 17:29:29');
 /*!40000 ALTER TABLE `transacao` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela argosbd.usuario
