@@ -8,10 +8,10 @@ ini_set("display_errors", true);
 define("DB_HOST", "localhost");
 define("DB_USER", "root");
 define("DB_PASSWORD", "p@\$\$w0rd");
-define("DB_DB", "argosbd");
+define("DB_DB", "restaurante");
 
 # define a chave privada para Json Web Token - JWT
-define("PRIVATE_KEY", "chavePrivadaParaJsonWebTokenDisqueDenuncia");
+define("PRIVATE_KEY", "chavePrivadaParaJsonWebToken");
 
 # carrega classe MYSQLi
 require_once "class/database.php";

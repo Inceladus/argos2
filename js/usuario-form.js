@@ -4,68 +4,9 @@ if ( data ) {
 	$('.modal-title').text('Usuário #'+data.idusuario);
 	$('input[name="idusuario"]').val(data.idusuario);
 	$('input[name="nome"]').val(data.nome);
-	$('input[name="rg"]').val(data.rg);
-	$('input[name="cpf"]').val(data.cpf);
 	$('input[name="email"]').val(data.email);
-	$('input[name="dt_nascimento"]').val(data.dt_nascimento);
 	$('input[name="contato"]').val(data.contato);
-	//$('select[name="idinstituicao"]').val(data.instituicao);
 }
-
-// Select Picker para instituicao
-var selectInstituicao = $('select[name="idinstituicao"]');
-
-// Carrega options
-$.ajax({
-	type: 'POST',
-	url: url+ "/api.php",
-	data: {classe: "instituicao", metodo: "obterTodos", token: token},
-	success: function(result) {	
-		if ( ! result.data ) result.data = [];
-		$.each( result.data, function(index, element) {
-			selectInstituicao.append( $('<option>', {value: element.idinstituicao, text: element.instituicao}) );
-		});
-
-		selectInstituicao.html(selectInstituicao.find('option').sort(function(x, y) {
-			// to descending order switch "<" for ">"
-			return $(x).text() > $(y).text() ? 1 : -1;
-		}));
-
-		if (data){
-			console.log(data);
-			selectInstituicao.val(data.idinstituicao);
-		} 
-		else{
-			selectInstituicao.val(null);	
-		} 
-
-		selectInstituicao.selectpicker();				
-	}
-});	
-
-// // Carrega options
-// $.ajax({
-// 	type: 'POST',
-// 	url: url+'/api.php',
-// 	data: {classe: "instituicao", metodo: "obterTodos", token: token},
-// 	success: function(result) {	
-// 		if ( result.error ) result.data = [];
-
-// 		$.each( result.data, function(index, element) {
-// 			select_1.append( $('<option>', {value: element.idinstituicao, text: element.instituicao}) );
-// 		});
-
-// 		select_1.html(select_1.find('option').sort(function(x, y) {
-// 			// to descending order switch "<" for ">"
-// 			return $(x).text() > $(y).text() ? 1 : -1;
-// 		}));
-
-// 		if (data) select_1.text(data.idinstituicao);
-// 		else select_1.val(null);
-
-// 		select_1.selectpicker();				
-// 	}
-// });	
 
 // Select Picker para permissao
 var select_2 = $('select[name="permissao[]"]');
@@ -96,12 +37,6 @@ if ( data ) {
 	$('#btn-renovar-senha').hide();
 }			
 
-$('#idinstituicao').change( function() {
-	if ($(this).val() == '-- Novo orgão --') {
-		$('#div-setor').html("<input class='form-control' type='text' id='instituicao' name='instituicao' placeholder='Escreva o nome do orgão' required>");
-		$('#instituicao').focus();
-	}
-});
 
 $('form').submit(function(){
 	var formData = $(this).serializeArray();

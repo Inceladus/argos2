@@ -1,20 +1,25 @@
 { 
-	"title": "ARGOS",
+	"title": "Restaurante",
 	"items": [ 
-		{ "label": "Operação",
+		{ "label": "Mesa",
 		  "subitems": [
-			{ "id": "cadastrar-operacao", "label": "Cadastrar Operação" },
-			{ "id": "cadastrar-acoes", "label": "Cadastrar Ação da Operação" },
-			{ "id": "cadastrar-produtividade", "label": "Cadastrar Produtividade da Ação" }
+			{ "id": "mesa", "label": "Cadastrar" },
+			{ "id": "mesa-consultar", "label": "Consultar" }
+			]
+		},
+		{ "label": "Pedido",
+		  "subitems": [
+			{ "id": "pedido", "label": "Cadastrar" },
+			{ "id": "pedido-consultar", "label": "Consultar" }
+			]
+		},
+		{ "label": "Cardápio",
+		  "subitems": [
+			{ "id": "cardapio", "label": "Cadastrar" }
 			]
 		},
 		{"label": "Administração",
 			"subitems": [
-				{ "id": "cadastrar-instituicao", "label": "Cadastrar Instituição"},
-				{ "id": "cadastrar-recurso", "label": "Cadastrar Recursos" },
-				{ "id": "cadastrar-grupo-indicador", "label": "Cadastrar Grupo de Indicador" },
-				{ "id": "cadastrar-indicador", "label": "Cadastrar Indicador" },
-				{ "id": "tipo-ocorrencia", "label": "Cadastrar Tipo de Ocorrência" },
 				{ "id": "usuario", "label": "Cadastrar usuários" },
 				{ "id": "mudasenha", "label": "Mudar senha" }
 			]

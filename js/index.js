@@ -1,4 +1,4 @@
-var url = window.location.origin + '/argos/api';
+var url = window.location.origin + '/restaurante/api';
 
 // Verifica se existe o token na sessionStorage
 if ( sessionStorage.getItem('token') ) {
@@ -12,7 +12,7 @@ if ( sessionStorage.getItem('token') ) {
 	var permissions = user.permissao.split(',');
 	
 	var menu = $.ajax({
-		url: 'json/menu.json',  
+		url: 'json/menu.json',
 		success: function( menu ) {
 			var liMenu = '';
 			$.each(menu.items, function(i, item) {
@@ -68,7 +68,7 @@ if ( sessionStorage.getItem('token') ) {
 	// Token não existe na sessionStorage
 	$('nav').hide()
 	$('main').hide();
-	$('title').text('ARGOS - Acesso restrito');
+	$('title').text('Restaurante - Acesso restrito');
 	$('.modal-content').load('partial/login.html');
 	$('.modal-content').css('width','320px');
 	$('.modal').modal('show');
