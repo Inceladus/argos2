@@ -4,7 +4,7 @@
 		{ "label": "Operação",
 		  "subitems": [
 			{ "id": "cadastrar-operacao", "label": "Cadastrar Operação" },
-			{ "id": "cadastrar-acoes", "label": "Cadastrar Ação da Operação" },
+			{ "id": "cadastrar-acoes", "label": "Cadastrar Ação" },
 			{ "id": "cadastrar-produtividade", "label": "Cadastrar Produtividade da Ação" }
 			]
 		},

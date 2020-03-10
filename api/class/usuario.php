@@ -16,7 +16,7 @@ class usuario extends database {
 	}
 	
 	public function obterTodos() {
-		$sql = "SELECT idusuario, nome, u.idinstituicao, instituicao, email, contato, permissao, u.dt_update, ativado
+		$sql = "SELECT idusuario, nome, u.idinstituicao, instituicao, email, contato, permissao, u.dt_update, ativado, rg, cpf
 		FROM usuario u
 		INNER JOIN instituicao o on u.idinstituicao=o.idinstituicao";
 
@@ -48,7 +48,7 @@ class usuario extends database {
 		$this->dt_nascimento = @ $_REQUEST['dt_nascimento'];
 		$this->permissao = implode(',', @ $_REQUEST['permissao']);
 		$this->contato = @ $_REQUEST['contato'];
-		$this->instituicao = @ $_REQUEST['idinstituicao'];
+		$this->idinstituicao = @ $_REQUEST['idinstituicao'];
 
 		if ( @ $_REQUEST['ativado'] ) $this->ativado = 'S';
 		else $this->ativado = 'N';
