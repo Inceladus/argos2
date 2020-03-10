@@ -1,5 +1,5 @@
 <form role="form">
-	<div class="modal-header">
+	<div class="modal-header bg-success">
 		<h4 class='modal-title'></h4>
 		<button type="button" class="close" data-dismiss="modal" aria-label="Fechar">&times;</button>
 	</div>
@@ -8,38 +8,22 @@
 		<div class="row">
 			<div class="col-sm-6">
 				<label for='nome'>Nome</label>
-				<input class='form-control' type='text' id='nome' name='nome' placeholder='Escreva o nome completo do usuário' required>
-			</div>
-			<div class="col-sm-6">
-				<label for='rg'>RG</label>
-				<input class='form-control' type='text' id='rg' name='rg' placeholder='Digite o RG do usuário' required>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-6">
-				<label for='cpf'>CPF</label>
-				<input class='form-control' id='cpf' name='cpf' placeholder='Digite o CPF do usuário' required>	
+				<input class='form-control' type='text' id='nome' name='nome' placeholder='Digite o nome completo do usuário' required>
 			</div>
 			<div class="col-sm-6">
 				<label for='email'>E-mail</label>
-				<input class='form-control' type='email' id='email' name='email' placeholder='Escreva o e-mail do usuário' required>	
+				<input class='form-control' type='email' id='email' name='email' placeholder='Digite o e-mail do usuário' required>	
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-sm-6">
-				<label>Data de Nascimento</label>
-				<input type="date" class="form-control" id="dt_nascimento" name="dt_nascimento">
+				<label for='contato'>Contato</label>
+				<input class='form-control' type='text' id='contato' name='contato' placeholder='Digite o contato do usuário' required>
 			</div>
 			<div class="col-sm-6">
 				<label for='permissao'>Permissões</label>
-				<select class='form-control selectpicker' name='permissao[]' data-live-search='false' data-actions-box='true' required multiple></select>	
+				<select class='form-control selectpicker' name='permissao[]' data-live-search='false' data-actions-box='true' required multiple></select>			
 			</div>
-		</div>
-		<div class="from-group">			
-			<label>Instituição</label>
-			<div id='div-setor'>
-				<select class='form-control selectpicker' id='idinstituicao' name='idinstituicao' data-live-search='true' required></select>
-			</div>	
 		</div>
 		<div class="form-check">
 		  <input class="form-check-input" type="checkbox" id="ativado" name='ativado'>

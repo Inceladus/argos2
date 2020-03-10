@@ -14,10 +14,9 @@ $('form').submit(function() {
 					alert(result.error);
 				} else {
 					sessionStorage.setItem('token', result.token);
-					window.location.reload(true);									
+					window.location.reload(true);
 				}
 			} else {
-				// Nenhum resultado
 				$('input').val(null);
 				alert('USUÁRIO e SENHA não encontrados');
 			}

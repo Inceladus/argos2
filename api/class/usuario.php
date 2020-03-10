@@ -16,9 +16,13 @@ class usuario extends database {
 	}
 	
 	public function obterTodos() {
+<<<<<<< HEAD
 		$sql = "SELECT idusuario, nome, u.idinstituicao, instituicao, email, contato, permissao, u.dt_update, ativado, rg, cpf
 		FROM usuario u
 		INNER JOIN instituicao o on u.idinstituicao=o.idinstituicao";
+=======
+		$sql = "SELECT * FROM usuario";
+>>>>>>> b34cb96776268972f3dea25440ecb77a7de28b26
 
 		if ( $rs = parent::fetch_all($sql) ) {
 			foreach ( $rs as $row ) {
@@ -33,22 +37,15 @@ class usuario extends database {
 	}
 
 	public function salvar() {
-		if ( @ $_REQUEST['instituicao'] ) {
-			require_once ('class/instituicao.php');
-			$_instituicao = new instituicao();
-			$instituicao = $_instituicao->salvar();
-			$_REQUEST['idinstituicao'] = $instituicao['idinstituicao'];
-		}
-		
 		$this->idusuario = @ $_REQUEST['idusuario'];
 		$this->nome = (@ $_REQUEST['nome']);
-		$this->rg = (@ $_REQUEST['rg']);
-		$this->cpf = (@ $_REQUEST['cpf']);
 		$this->email = (@ $_REQUEST['email']);
-		$this->dt_nascimento = @ $_REQUEST['dt_nascimento'];
 		$this->permissao = implode(',', @ $_REQUEST['permissao']);
 		$this->contato = @ $_REQUEST['contato'];
+<<<<<<< HEAD
 		$this->idinstituicao = @ $_REQUEST['idinstituicao'];
+=======
+>>>>>>> b34cb96776268972f3dea25440ecb77a7de28b26
 
 		if ( @ $_REQUEST['ativado'] ) $this->ativado = 'S';
 		else $this->ativado = 'N';

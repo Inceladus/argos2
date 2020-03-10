@@ -14,7 +14,7 @@ var datatable = $('#datatable').DataTable( {
 	},
 	"columns": [
 		{ "data": "nome", "className": "details-control" },
-		{ "data": "instituicao", "className": "details-control", "visible": true},
+		{ "data": "contato", "className": "details-control", "visible": true},
 		{ "data": "dt_update", "className": "details-control dt-body-right", "visible": true, "render": function(datetime) { return datetime_format(datetime,'d/m/y h:i')} }
 	],
 	"responsive": true,		

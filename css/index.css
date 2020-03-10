@@ -1,10 +1,38 @@
-body {
-	padding-top: 4rem;
-	padding-bottom: 1rem;
-	height: 100vh;
+html {
+    height: 100%;
+    min-height: 100%;
+}
+body{
 	background: url('../img/background.jpg') fixed;
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
+	display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+footer {
+	margin-top: auto;
+}
+
+.map-responsive{
+    overflow:hidden;
+    padding-bottom:50%;
+    position:relative;
+    height:0;
+}
+.map-responsive iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+}
+
+.starter{
+	/*background:rgba(164,164,164,0.70);*/
+	margin-top: 80px;
+	margin-bottom: 20px;
+	padding: 30px;
 }
 
 /* The Container (background) */
@@ -71,4 +99,10 @@ td.add-control {
 td.remove-control {
     background: url('../img/remove-control.png') no-repeat center center;
     cursor: pointer;
+}
+.transparente{
+	background: rgba(254,195, 103, 0.8);
+}
+.navbars{
+	background: #FEC367;
 }
